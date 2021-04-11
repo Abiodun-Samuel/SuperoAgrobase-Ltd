@@ -2,25 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pages;
+use App\Http\Controllers\MailController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/user', 'PagesController@index');
 Route::get('/', [Pages::class, 'index']);
-Route::get('/contact_us', [Pages::class, 'contact']);
 Route::get('/about_us', [Pages::class, 'about']);
-Route::get('/{serv}/{servname}', [Pages::class, 'services']);
-// Route::get('/', [Pages::class, 'index']);
+Route::get('/Our Products', [Pages::class, 'product']);
+Route::get('/products/{product_page}', [Pages::class, 'products'])->where('product_page', 'Agricourt Products|Harvestyield Products');
+Route::get('/services/{service_page}', [Pages::class, 'services'])->where('service_page', 'Agricourt Ventures|Harvestyield Farm|Agro-Input');
 
+// Mail Controller Routes
+Route::get('/contact_us', [MailController::class, 'contact']);
+
+Route::post('/contact_us/sendmail', [MailController::class, 'contactMail'])->name('contactmail');
+
+Route::post('/newsletter', [MailController::class, 'newsLetter'])->name('newsletter');
+
+Route::fallback(function () {
+   $title = "Error";
+   return view('error', compact('title'));
+});
