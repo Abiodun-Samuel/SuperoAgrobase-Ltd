@@ -1,106 +1,105 @@
 !(function ($) {
-  ("use strict");
+    ("use strict");
 
-  // Preloader
-      $(window).on('load', function() {
-        if ($('#centerdiv').length) {
-          $('#centerdiv').delay(100).fadeOut('slow', function() {
-            $(this).remove();
-          });
+    // Popup Display
+    function showPopup() {
+        var popupContainer = $(".contentBox"),
+            popupBtn = popupContainer.find(".close");
+
+        if (Cookies.get("popupShown") !== "yes") {
+            //set a cookie
+            Cookies.set("popupShown", "yes", { expires: 1 });
+            popupContainer.addClass("active");
         }
-      });
 
+        popupBtn.on("click", function () {
+            popupContainer.removeClass("active");
+        });
+    }
+    window.onload = function () {
+        setTimeout(function () {
+            showPopup();
+        }, 500);
+    };
 
-  // about us gallery
-  $(".main-instagram").owlCarousel({
-    loop: true,
-    margin: 0,
-    dots: false,
-    autoplay: true,
-    autoplayTimeout: 2000,
-    autoplayHoverPause: false,
-    responsive: {
-      0: {
-        items: 1.5,
-        nav: true,
-      },
-      600: {
-        items: 2.5,
-        nav: true,
-      },
-      1000: {
-        items: 4,
-        nav: true,
-      },
-    },
-  });
+   
+ 
 
-  /* ..............................................
-	   products Special Menu
-	   ................................................. */
-
-  //   var Container = $(".container");
-  //   Container.imagesLoaded(function () {
-  //     var portfolio = $(".special-menu");
-  //     portfolio.on("click", "button", function () {
-  //       $(this).addClass("active").siblings().removeClass("active");
-  //       var filterValue = $(this).attr("data-filter");
-  //       $grid.isotope({
-  //         filter: filterValue,
-  //       });
-  //     });
-  //     var $grid = $(".special-list").isotope({
-  //       itemSelector: ".special-grid",
-  //     });
-  //   });
-
-  // back to the top button
-  $(document).ready(function () {
-    $(window).on("scroll", function () {
-      if ($(this).scrollTop() > 100) {
-        $("#back-to-top").fadeIn();
-      } else {
-        $("#back-to-top").fadeOut();
-      }
-    });
-    $("#back-to-top").click(function () {
-      $("html, body").animate(
-        {
-          scrollTop: 0,
+    var swiper = new Swiper(".swiper-container", {
+        pagination: {
+            el: ".swiper-pagination",
+            type: "progressbar",
         },
-        600
-      );
-      return false;
+        preloadImages: false,
+        lazy: true,
+        loop: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 1.5,
+        coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            shadow: true,
+            slideShadows: true,
+        },
     });
-  });
 
-  // Initial AOS
-  function aos_init() {
-    AOS.init({
-      duration: 500,
-      once: false,
-      mirror: false,
-      offset: 50,
+    // back to the top button
+    $(document).ready(function () {
+        $(window).on("scroll", function () {
+            if ($(this).scrollTop() > 100) {
+                $("#back-to-top").fadeIn();
+            } else {
+                $("#back-to-top").fadeOut();
+            }
+        });
+        $("#back-to-top").click(function () {
+            $("html, body").animate(
+                {
+                    scrollTop: 0,
+                },
+                600
+            );
+            return false;
+        });
     });
-  }
-  $(window).on("load", function () {
-    aos_init();
-  });
 
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.to(".about-img", {
-    scale: 1.5,
-    duration: 2,
-    scrollTrigger: {
-      trigger: "#aboutus",
-      scrub: true,
-      start: "top center",
-      end: "bottom top",
-    },
-  });
+    // Initial AOS
+    function aos_init() {
+        AOS.init({
+            duration: 500,
+            once: false,
+            mirror: false,
+            offset: 50,
+        });
+    }
+    $(window).on("load", function () {
+        aos_init();
+    });
 
-  // Match height
-  $('.footer-box').matchHeight();
+    // gsap.registerPlugin(ScrollTrigger);
+    // gsap.to(".about-img", {
+    //   scale: 1.5,
+    //   duration: 2,
+    //   scrollTrigger: {
+    //     trigger: "#aboutus",
+    //     scrub: true,
+    //     start: "top center",
+    //     end: "bottom top",
+    //   },
+    // });
 
-  $('.card').matchHeight();
+    // Match height
+    $(".footer-box").matchHeight();
+
+    $(".card").matchHeight();
 })(jQuery);
+
+// showPopup();

@@ -9,20 +9,7 @@
             </p>
         </div>
 
-        {{-- Success Message Display --}}
-        @if (Session::has('message_sent'))
-            <div class="row my-3">
-                <div class="col-lg-6 text-center">
-                    <img class="img-fluid" src="{{ url('images/thanks.jpg') }}" alt="Thank You">
-                </div>
-                <div class="col-lg-6 py-1 text-center">
-                    <div class="alert alert-success" role="alert">
-                        <p>{{ Session::get('message_sent') }}</p>
-                    </div>
-                    @include('layouts.order')
-                </div>
-            </div>
-        @endif
+
 
         {{-- Form Section --}}
         <div class="row mt-5">
@@ -36,7 +23,6 @@
                                     enctype="application/x-www-form-urlencoded">
                                     @csrf
 
-
                                     @if ($errors->all())
                                         <div class="alert alert-danger">
                                             @foreach ($errors->all() as $error)
@@ -45,41 +31,30 @@
                                         </div>
                                     @endif
 
-
                                     <div class="form-row">
 
                                         {{-- Name --}}
                                         <div class="form-group col-lg-6">
                                             <input type="text" name="name" class="form-control" id="name"
                                                 placeholder="Name" value="{{ old('name') }}" required />
-
-
-
-
                                         </div>
 
                                         {{-- Phone --}}
                                         <div class="form-group col-lg-6">
                                             <input type="number" class="form-control" name="phone" id="phone"
                                                 placeholder="Phone Number" value="{{ old('phone') }}" required />
-
-
                                         </div>
 
                                         {{-- Subject --}}
                                         <div class="form-group col-lg-6">
                                             <input type="subject" class="form-control" name="subject" id="subject"
                                                 placeholder="Subject" value="{{ old('subject') }}" required />
-
-
                                         </div>
 
                                         {{-- Email --}}
                                         <div class="form-group col-lg-6">
                                             <input type="email" class="form-control" name="email" id="email"
                                                 placeholder="Your Email" value="{{ old('email') }}" required />
-
-
                                         </div>
 
                                         {{-- Message --}}
@@ -87,10 +62,20 @@
                                             <textarea class="form-control" name="message" rows="4" placeholder="Message"
                                                 value="{{ old('message') }}" required></textarea>
 
-
-
+                                            <small> <em>(All fields are required)</em></small>
                                         </div>
-                                        <small> <em>(All fields are required)</em></small>
+                                    </div>
+
+                                    {{-- google recaptcha --}}
+                                    <div class="form-group col-lg-12 my-3">
+                                        <div class="g-recaptcha img-fluid"
+                                            data-sitekey="{{ config('services.recaptcha.key') }}">
+                                        </div>
+                                        {{-- @if (Session::has('g-recaptcha-response'))
+                                            <div class="alert alert-danger">
+                                                <p>{{ Session::get('g-recaptcha-response') }}</p>
+                                            </div>
+                                        @endif --}}
                                     </div>
 
                                     {{-- Buttons --}}
@@ -193,7 +178,7 @@
                         <hr>
 
                         <div style="width: 100%">
-                            <iframe width="100%" height="125" frameborder="0" scrolling="no" marginheight="0"
+                            <iframe width="100%" height="250" frameborder="0" scrolling="no" marginheight="0"
                                 marginwidth="0"
                                 src="https://maps.google.com/maps?width=100%25&amp;height=200&amp;hl=en&amp;q=bakare%20Abiodun%20Street,%20Wera,%20Ikorodu%20Lagos.+(superoagrobase)&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
                             </iframe>

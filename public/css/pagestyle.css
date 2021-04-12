@@ -123,8 +123,8 @@ section {
 }
 
 /* contact form */
-#contact-page .container .row .contact .form input,
-#contact-page .container .row .contact .form textarea {
+#contact-page input,
+#contact-page textarea {
     font-size: 14px;
     border: none;
     outline: none;
@@ -133,6 +133,7 @@ section {
     transition: 450ms;
     color: #212121;
     background-color: #ffffff;
+    resize: none;
 }
 #contact-page input::-webkit-outer-spin-button,
 #contact-page input::-webkit-inner-spin-button {
@@ -299,4 +300,16 @@ h5 {
     #order-page .xs {
         max-width: 50%;
     }
+}
+
+/* Order Update Page  */
+#order-update{
+    background: url('../images/order-bg.svg') no-repeat ;
+    background-blend-mode: overlay;
+    background-position: center;
+    background-size: cover;
+}
+#order-update img{
+    padding:5px;
+    border:1px solid #ddd;
 }

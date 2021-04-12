@@ -1,12 +1,14 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
-
+use App\Mail\NewsLetter;
+use Session;
 
 class MailController extends Controller
 {
@@ -20,10 +22,23 @@ class MailController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:20|min:3',
-            'phone' => 'required|numeric|digits:11|integer',
+            'phone' => 'required|numeric|digits:11',
             'email' => 'required|email:rfc,strict,filter',
             'subject' => 'required|string',
-            'message' => 'required|string'
+            'message' => 'required|string',
+            'g-recaptcha-response' =>  function ($attribute, $value, $fail) {
+                $secretKey = config('services.recaptcha.secret');
+                $response = $value;
+                $userIp = $_SERVER['REMOTE_ADDR'];
+                $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$userIp";
+                $response = \file_get_contents($url);
+                $response = json_decode($response);
+
+                if (!$response->success) {
+                    Session::flash('Please check reCaptcha');
+                    $fail('Google Recaptcha Failed, Please Check the reCaptcha');
+                }
+            },
         ], [
             'phone.integer' => 'Enter a valid phone number',
         ]);
@@ -37,19 +52,33 @@ class MailController extends Controller
         ];
 
         $user = $ContactData['name'];
-
+        $message_sent = "Thank you for contacting us. We will get back to you promptly.";
+        $title = "Thank You";
         $to = "contact@superoagrobase.com";
-        $test = "abiodunsamyemi@gmail.com";
 
         Mail::to($to)->send(new SendMail($ContactData));
-        return back()->with('message_sent', "$user, Thank you for contacting us. We will get back to you promptly.");
+        return view('/thank', compact('title', 'user', 'message_sent'));
     }
+
     public function newsLetter(Request $request)
     {
+        $title = "Thank You";
+        $message_sent = "Thank you for subscribing to our newsletter";
         $newsLetter  = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
         ]);
-        return 'news';
+
+        $newsLetterSubs  = [
+            'name' => htmlspecialchars($request->name),
+            'email' => htmlspecialchars($request->email),
+        ];
+
+        $user = $newsLetterSubs['name'];
+
+        $to = "inventorymanager@superoagrobase.com";
+
+        Mail::to($to)->send(new NewsLetter($newsLetterSubs));
+        return view('/thank', compact('title', 'user', 'message_sent'));
     }
 }

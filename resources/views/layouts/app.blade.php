@@ -25,10 +25,8 @@
 
     <!-- css libraries -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    {{-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> --}}
 
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="{{ url('css/pagestyle.css') }}" />
@@ -99,7 +97,7 @@
             <div class="container wrapper">
                 <div class="logo">
                     <a href="{{ url('/') }}">
-                        <img src="/images/logo.png" alt="Supero Agrobase Limited logo" /></a>
+                        <img loading="lazy" src="/images/logo.png" alt="Supero Agrobase Limited logo" /></a>
                 </div>
                 <input type="radio" name="slider" id="menu-btn" />
                 <input type="radio" name="slider" id="close-btn" />
@@ -174,7 +172,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <img src="{{ url('images/logo.jpg') }}" alt="Company logo">
+                            <img loading="lazy" src="{{ url('images/logo.jpg') }}" alt="Company logo">
 
                             <h6 class="card-title"><span>Supero Agrobase limited</span></h6>
 
@@ -234,6 +232,7 @@
                                     your
                                     inbox. Never miss important opportunities</p>
 
+
                                 <form action="{{ route('newsletter') }}" method="POST"
                                     enctype="application/x-www-form-urlencoded">
                                     @csrf
@@ -286,17 +285,31 @@
     </footer>
     <!-- ========== Footer Section Ends Here ========== -->
 
-    {{-- ========== Preloader ========== --}}
-    <div id="centerdiv">
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+   
+
+    {{-- ========== Pop up Display ========== --}}
+    <div class="contentBox">
+        <div class="popup">
+            <div class="card">
+                <i class="close text-right">
+                    <svg focusable="false" width="1.5em" height="1.5em" viewBox="0 0 32 32">
+                        <path
+                            d="M5 5v22h22V5zm2 2h18v18H7zm4.688 3.313l-1.407 1.406L14.562 16l-4.343 4.344l1.406 1.406l4.344-4.344l4.312 4.313l1.407-1.407L17.375 16l4.25-4.25l-1.406-1.406l-4.25 4.25z"
+                            fill="#212121" />
+                    </svg>
+                </i>
+
+                <img loading="lazy" src="{{ url('/images/product.jpg') }}" class="card-img-top img-fluid"
+                    alt="Place order now">
+                <div class="card-body">
+                    <p class="card-text"> Check out our fresh products </p>
+                    <a href="{{ route('product') }}" class="btn btn-primary"> Click Here</a>
+                </div>
+            </div>
+        </div>
     </div>
+
+    {{-- ========== Pop up Display ========== --}}
 
     <!-- ========== fixed buttons ========== -->
     <a href="https://wa.me/message/KK2QPDR6KTLBK1" class="whatsapp-btn">
@@ -320,14 +333,17 @@
     <!-- script libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.min.js"></script> --}}
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script> --}}
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/CSSRulePlugin.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
 
     <!-- custom script file -->
     <script src="{{ url('/js/script.js') }}"></script>

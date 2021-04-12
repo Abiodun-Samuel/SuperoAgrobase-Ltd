@@ -52,7 +52,8 @@
 
                 <div class="col-lg-3 col-md-4 col-sm-6 mt-3 mb-3 xs">
                     <div class="card">
-                        <img src="{{ url('/images/team/member3.jpg') }}" class="card-img-top" alt="team member">
+                        <img loading="lazy" src="{{ url('/images/team/member3.jpg') }}" class="card-img-top"
+                            alt="team member">
 
                         <div class="card-body text-center">
                             <p class="member-name">
@@ -108,7 +109,8 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mt-3 mb-3 xs">
                     <div class="card">
-                        <img src="{{ url('/images/team/member1.jpg') }}" class="card-img-top" alt="team member">
+                        <img loading="lazy" src="{{ url('/images/team/member1.jpg') }}" class="card-img-top"
+                            alt="team member">
 
                         <div class="card-body text-center">
                             <p class="member-name">
@@ -164,7 +166,8 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mt-3 mb-3 xs">
                     <div class="card">
-                        <img src="{{ url('/images/team/member2.jpg') }}" class="card-img-top" alt="team member">
+                        <img loading="lazy" src="{{ url('/images/team/member2.jpg') }}" class="card-img-top"
+                            alt="team member">
 
                         <div class="card-body text-center">
                             <p class="member-name">
@@ -220,7 +223,8 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mt-3 mb-3 xs">
                     <div class="card">
-                        <img src="{{ url('/images/team/member4.jpg') }}" class="card-img-top" alt="team member">
+                        <img loading="lazy" src="{{ url('/images/team/member4.jpg') }}" class="card-img-top"
+                            alt="team member">
 
                         <div class="card-body text-center">
                             <p class="member-name">

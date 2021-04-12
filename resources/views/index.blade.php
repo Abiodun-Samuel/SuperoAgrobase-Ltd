@@ -17,7 +17,8 @@
                     </div>
                     <div>
                         <a href="{{ url('/contact_us') }}"><button class="btn btn--sec">Contact Us</button></a>
-                        <a href="{{ url('/Our Products') }}"><button class=" btn btn--pry ml-4"> Our Products</button></a>
+                        <a href="{{ url('/Our Products') }}"><button class=" btn btn--pry ml-4"> Our
+                                Products</button></a>
                     </div>
                 </div>
 
@@ -85,7 +86,7 @@
 
     </div>
     <!-- ========== End Intro Section ========== -->
-    
+
     <!-- ========== About Us Section ========== -->
     <section id="aboutus">
         <div class="container">
@@ -109,8 +110,8 @@
 
                 <div class="col-lg-5 col-md-6 text-center">
                     <div class="about-img-box">
-                        <img class="about-img" src="{{ url('/images/basket-full-vegetables.jpg') }}"
-                            alt="basket of vegetables">
+                        <img loading="lazy" class="about-img rounded img-fluid" src="{{ url('/images/office.jpg') }}"
+                            alt="SUPEROAGROBASE OFFICE">
                     </div>
                 </div>
             </div>
@@ -120,67 +121,76 @@
     <!-- ========== About Us Section ========== -->
 
     <!-- ========== Gallery Section ========== -->
-    <div class="instagram-box">
-        <div class="main-instagram owl-carousel owl-theme">
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img loading="lazy" src="{{ url('images/gallery/gallery1.jpg') }}" alt="" />
+    <div class="about-gallery">
+        <div class="container">
+            <div class="row">
+                {{-- Gallery 1 --}}
+                <div class="col-lg-2"></div>
+
+                <div class="col-lg-8 text-center">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper py-4">
+
+                            <div class="swiper-slide">
+                                <img class="swiper-lazy img-fluid" loading="lazy"
+                                    src="{{ url('images/gallery/gallery1.jpg') }}" alt="image" />
+                                {{-- <div class="swiper-lazy-preloader"></div> --}}
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" loading="lazy"
+                                    src="{{ url('images/gallery/gallery2.jpg') }}" alt="image" />
+
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" loading="lazy"
+                                    src="{{ url('images/gallery/gallery3.jpg') }}" alt="image" />
+
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" loading="lazy"
+                                    src="{{ url('images/gallery/gallery4.jpg') }}" alt="image" />
+
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" loading="lazy"
+                                    src="{{ url('images/gallery/gallery5.jpg') }}" alt="image" />
+
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" loading="lazy"
+                                    src="{{ url('images/gallery/gallery6.jpg') }}" alt="image" />
+
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" loading="lazy"
+                                    src="{{ url('images/gallery/gallery7.jpg') }}" alt="image" />
+
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" loading="lazy"
+                                    src="{{ url('images/gallery/gallery8.jpg') }}" alt="image" />
+
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid swiper-lazy" loading="lazy"
+                                    src="{{ url('images/gallery/gallery9.jpg') }}" alt="image" />
+
+                            </div>
+                        </div>
+
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+
                 </div>
+
+                <div class="col-lg-2"></div>
             </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img loading="lazy" src="{{ url('images/gallery/gallery2.jpg') }}" alt="" />
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img loading="lazy" src="{{ url('images/gallery/gallery3.jpg') }}" alt="" />
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img loading="lazy" src="{{ url('images/gallery/gallery4.jpg') }}" alt="" />
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img loading="lazy" src="{{ url('images/gallery/gallery5.jpg') }}" alt="" />
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img loading="lazy" src="{{ url('images/gallery/gallery6.jpg') }}" alt="" />
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img loading="lazy" src="{{ url('images/gallery/gallery7.jpg') }}" alt="" />
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img loading="lazy" src="{{ url('images/gallery/gallery8.jpg') }}" alt="" />
-                </div>
-            </div>
-            {{-- <div class="item">
-          <div class="ins-inner-box">
-            <img
-              loading="lazy"
-              src="/images/gallery/gallery9.jpg"
-              alt=""
-            />
-          </div>
         </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img
-              loading="lazy"
-              src="/images/gallery/gallery10.jpg"
-              alt=""
-            />
-          </div>
-        </div> --}}
-        </div>
+
     </div>
     <!-- ========== Gallery Section ========== -->
 
@@ -199,10 +209,11 @@
             <div class="row my-3">
 
                 {{-- Agricourt Ventures Services --}}
-                <div class="col-lg-4 col-md-6 my-4">
+                <div class="col-lg-6 col-md-6 my-4">
                     <div class="card">
                         <div class="service-logo text-center">
-                            <img src="{{ url('/images/agricourt-logo.png') }}" class="card-img-top" alt="agricourt-logo">
+                            <img loading="lazy" src="{{ url('/images/agricourt-logo.png') }}" class="card-img-top"
+                                alt="agricourt-logo">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Agricourt Ventures</h5>
@@ -223,10 +234,10 @@
                 </div>
 
                 {{-- Harvestyield Services --}}
-                <div class="col-lg-4 col-md-6 my-4">
+                <div class="col-lg-6 col-md-6 my-4">
                     <div class="card">
                         <div class="service-logo text-center">
-                            <img src="{{ url('/images/harvestyield-logo.png') }}" class="card-img-top"
+                            <img loading="lazy" src="{{ url('/images/harvestyield-logo.png') }}" class="card-img-top"
                                 alt="harvestyield-logo">
                         </div>
                         <div class="card-body">
@@ -248,7 +259,7 @@
                 </div>
 
                 {{-- Agro Input Services --}}
-                <div class="col-lg-4 my-4">
+                <div class="col-lg-12 my-4">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Agro-Input products claim(s), Research and Promotion </h5>
@@ -276,9 +287,6 @@
 
 
     <!-- ========== Products Section ========== -->
-
-    <!-- ========== Harvestyield Products Section =========== -->
-
     <section id="products">
         <div class="container">
 
@@ -286,6 +294,7 @@
                 <h2> Harvestyield <span>Products</span></h2>
             </div>
 
+            <!-- ========== Harvestyield Products Section =========== -->
             <div class="row text-center my-4">
 
                 <x-harvestyield-prd product="Cucumber" />
@@ -300,10 +309,9 @@
                 <h2>Agricourt <span>Products</span></h2>
             </div>
 
+            <!-- ========== Agricourt Products Section =========== -->
             <div class="row text-center my-4">
-
                 {{-- Products pix are 300px by 300px --}}
-
                 <x-agricourt-prd product="Irrigation Drips" />
                 <x-agricourt-prd product="Seeds" />
                 <x-agricourt-prd product="Herbicides" />
@@ -318,9 +326,24 @@
 
         </div>
     </section>
-
-    @include('layouts/order')
     <!-- ========== Products Section Ends========== -->
+
+    {{-- ========= Order Update ========== --}}
+    <section id="order-update">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10  text-center">
+                    <img loading="lazy" src="{{ url('/images/sweetcorn.jpg') }}" alt="Place order now"
+                        class="img-fluid my-3 rounded">
+
+                    @include('layouts/order')
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+    </section>
+    {{-- ========= Order Update ========== --}}
 
     {{-- ========== Contact Section ========== --}}
     @include('layouts.contact')
