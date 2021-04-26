@@ -71,11 +71,11 @@
                                         <div class="g-recaptcha img-fluid"
                                             data-sitekey="{{ config('services.recaptcha.key') }}">
                                         </div>
-                                        {{-- @if (Session::has('g-recaptcha-response'))
+                                        @if (Session::has('g-recaptcha-response'))
                                             <div class="alert alert-danger">
                                                 <p>{{ Session::get('g-recaptcha-response') }}</p>
                                             </div>
-                                        @endif --}}
+                                        @endif
                                     </div>
 
                                     {{-- Buttons --}}

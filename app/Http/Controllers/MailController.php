@@ -1,13 +1,12 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewsLetter;
+use App\Mail\SendMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendMail;
-use App\Mail\NewsLetter;
 use Session;
 
 class MailController extends Controller
@@ -26,7 +25,7 @@ class MailController extends Controller
             'email' => 'required|email:rfc,strict,filter',
             'subject' => 'required|string',
             'message' => 'required|string',
-            'g-recaptcha-response' =>  function ($attribute, $value, $fail) {
+            'g-recaptcha-response' => function ($attribute, $value, $fail) {
                 $secretKey = config('services.recaptcha.secret');
                 $response = $value;
                 $userIp = $_SERVER['REMOTE_ADDR'];
@@ -48,7 +47,7 @@ class MailController extends Controller
             'phone' => htmlspecialchars($request->phone),
             'email' => htmlspecialchars($request->email),
             'subject' => htmlspecialchars($request->subject),
-            'message' => htmlspecialchars($request->message)
+            'message' => htmlspecialchars($request->message),
         ];
 
         $user = $ContactData['name'];
@@ -64,21 +63,25 @@ class MailController extends Controller
     {
         $title = "Thank You";
         $message_sent = "Thank you for subscribing to our newsletter";
-        $newsLetter  = $request->validate([
+        $newsLetter = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
         ]);
 
-        $newsLetterSubs  = [
+        $newsLetterSubs = [
             'name' => htmlspecialchars($request->name),
             'email' => htmlspecialchars($request->email),
         ];
 
         $user = $newsLetterSubs['name'];
+        $user_email = $newsLetter['email'];
 
         $to = "inventorymanager@superoagrobase.com";
 
-        Mail::to($to)->send(new NewsLetter($newsLetterSubs));
+        foreach ([$user_email, $to] as $rt) {
+            Mail::to($rt)->send(new NewsLetter($newsLetterSubs));
+        };
+
         return view('/thank', compact('title', 'user', 'message_sent'));
     }
 }

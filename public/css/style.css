@@ -101,9 +101,11 @@ section {
     align-items: center;
     justify-content: center;
     background: rgba(0, 0, 0, 0.7);
+    z-index: 10000000;
 }
 .contentBox.active {
     display: flex;
+    z-index: 10000000;
 }
 .popup {
     position: fixed;
