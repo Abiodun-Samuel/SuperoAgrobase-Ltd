@@ -19,7 +19,7 @@
                 @if ($students->count())
                     @foreach ($students as $student)
                         <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="card p-3 bg-white shadow-sm my-2">p
+                            <div class="card p-3 bg-white shadow-sm my-2">
                                 <p><b>Name:</b> {{ $student->name }}</p>
                                 <p><b>Email:</b> {{ $student->email }}</p>
                                 <p><b>Phone:</b> {{ $student->phone }}</p>

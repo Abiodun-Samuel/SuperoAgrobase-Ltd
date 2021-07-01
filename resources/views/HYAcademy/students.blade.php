@@ -13,7 +13,7 @@
                             <h4>Admission Details:</h4>
                             <p>Add No: {{ auth()->user()->hyacademy->admission_no }}</p>
                             <p>Name: {{ auth()->user()->hyacademy->name }}</p>
-                            <p>Email: {{ auth()->user()->hyacademy->email }}</p>
+                            <p>Email: {{ auth()->user()->email }}</p>
                             <p><a href="{{ url('/storage/images/HYAcademy/' . auth()->user()->hyacademy->name . '.pdf') }}"
                                     download> <u>Download</u> </a> your admission letter</P>
 

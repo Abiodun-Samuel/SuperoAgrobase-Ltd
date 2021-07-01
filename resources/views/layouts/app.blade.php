@@ -29,8 +29,8 @@
     @stack('styles')
 
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="{{ url('style.css?ver=1.0') }}" />
-    {{-- <link rel="stylesheet" href="{{ url('/css/style.css?ver=1.0') }}" /> --}}
+    {{-- <link rel="stylesheet" href="{{ url('style.css?ver=1.0') }}" /> --}}
+    <link rel="stylesheet" href="{{ url('/css/style.css?ver=1.0') }}" />
 
 </head>
 
@@ -305,8 +305,8 @@
     @stack('scripts')
 
     <!-- custom script file -->
-    <script src="{{ url('script.js?ver=1.0') }}"></script>
-    {{-- <script src="{{ url('/js/script.js?ver=1.0') }}"></script> --}}
+    {{-- <script src="{{ url('script.js?ver=1.0') }}"></script> --}}
+    <script src="{{ url('/js/script.js?ver=1.0') }}"></script>
 
 </body>
 
