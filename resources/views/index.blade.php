@@ -1,352 +1,426 @@
 @extends("layouts.app")
 
+@push('styles')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
+@endpush
+
 @section('content')
-
-    <!-- ========== Intro Section ========== -->
-    <div class="hero-section spadding-y-xxl position-relative z-index-1">
-        <div class="container max-width-adaptive-sm position-relative z-index-2">
-            <div class="row pt-5">
-                <div class="col-lg-12 hero-text mt-3">
-                    <div>
-                        <p>Proffering The Best Global
-                        </p>
-                        <h3> AGRICULTURAL <span> PRODUCTS</span> &
-                            <span>SERVICES</span>
-                        </h3>
-                        <em>Superoagrobase ... Key to Agricultural Productivity</em>
-                    </div>
-                    <div>
-                        <a href="{{ url('/contact_us') }}"><button class="btn btn--sec">Contact Us</button></a>
-                        <a href="{{ url('/Our Products') }}"><button class=" btn btn--pry ml-4"> Our
-                                Products</button></a>
-                    </div>
-                </div>
-
-            </div>
-
-
-        </div>
-
-        <figure class="bg-decoration z-index-1" aria-hidden="true">
-            <svg class="bg-decoration__svg color-contrast-higher opacity-40%" viewBox="0 0 1920 450" fill="none">
-                <rect opacity="1" x="610.131" y="-440" width="128" height="836.003" transform="rotate(46.8712 610.131 -440)"
-                    fill="url(#bg-decoration-v1-fx-5-linear-1)" />
-                <rect opacity="1" x="1899.13" y="-262" width="128" height="836.003" transform="rotate(46.8712 1899.13 -262)"
-                    fill="url(#bg-decoration-v1-fx-5-linear-2)" />
-                <rect opacity="1" x="2076.13" y="-321" width="128" height="836.003" transform="rotate(46.8712 2076.13 -321)"
-                    fill="url(#bg-decoration-v1-fx-5-linear-5)" />
-                <rect opacity="1" x="1294.5" y="40.3308" width="128" height="836.003"
-                    transform="rotate(-132.518 1294.5 40.3308)" fill="url(#bg-decoration-v1-fx-5-linear-4)" />
-                <rect opacity="1" x="1866.13" y="-453" width="128" height="836.003" transform="rotate(46.8712 1866.13 -453)"
-                    fill="url(#bg-decoration-v1-fx-5-linear-5)" />
-                <rect opacity="1" x="800.131" y="-418" width="128" height="836.003" transform="rotate(46.8712 800.131 -418)"
-                    fill="url(#bg-decoration-v1-fx-5-linear-5)" />
-                <rect opacity="1" x="436.448" y="-251" width="76.1734" height="340.424"
-                    transform="rotate(46.8712 436.448 -251)" fill="url(#bg-decoration-v1-fx-5-linear-7)" />
-                <defs>
-                    <linearGradient id="bg-decoration-v1-fx-5-linear-1" x1="674.131" y1="-440" x2="674.131" y2="396.003"
-                        gradientUnits="userSpaceOnUse">
-                        <stop stop-color="currentColor" />
-                        <stop offset="1" stop-color="currentColor" stop-opacity="0" />
-                    </linearGradient>
-                    <linearGradient id="bg-decoration-v1-fx-5-linear-2" x1="1963.13" y1="-262" x2="1963.13" y2="574.003"
-                        gradientUnits="userSpaceOnUse">
-                        <stop stop-color="currentColor" />
-                        <stop offset="1" stop-color="currentColor" stop-opacity="0" />
-                    </linearGradient>
-                    <linearGradient id="bg-decoration-v1-fx-5-linear-3" x1="2140.13" y1="-321" x2="2140.13" y2="515.003"
-                        gradientUnits="userSpaceOnUse">
-                        <stop stop-color="currentColor" />
-                        <stop offset="1" stop-color="currentColor" stop-opacity="0" />
-                    </linearGradient>
-                    <linearGradient id="bg-decoration-v1-fx-5-linear-4" x1="1358.5" y1="40.3308" x2="1358.5" y2="876.334"
-                        gradientUnits="userSpaceOnUse">
-                        <stop stop-color="currentColor" />
-                        <stop offset="1" stop-color="currentColor" stop-opacity="0" />
-                    </linearGradient>
-                    <linearGradient id="bg-decoration-v1-fx-5-linear-5" x1="1930.13" y1="-453" x2="1930.13" y2="383.003"
-                        gradientUnits="userSpaceOnUse">
-                        <stop stop-color="currentColor" />
-                        <stop offset="1" stop-color="currentColor" stop-opacity="0" />
-                    </linearGradient>
-                    <linearGradient id="bg-decoration-v1-fx-5-linear-5" x1="864.131" y1="-418" x2="864.131" y2="418.003"
-                        gradientUnits="userSpaceOnUse">
-                        <stop stop-color="currentColor" />
-                        <stop offset="1" stop-color="currentColor" stop-opacity="0" />
-                    </linearGradient>
-                    <linearGradient id="bg-decoration-v1-fx-5-linear-7" x1="474.534" y1="-251" x2="474.534" y2="89.4236"
-                        gradientUnits="userSpaceOnUse">
-                        <stop stop-color="currentColor" stop-opacity="0" />
-                        <stop offset="1" stop-color="currentColor" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        </figure>
-
-
-    </div>
-    <!-- ========== End Intro Section ========== -->
-
-    <!-- ========== About Us Section ========== -->
-    <section id="aboutus">
+    <!-- Hero -->
+    <div class="hero">
         <div class="container">
             <div class="row">
-                <div class="col-lg-7 col-md-6">
-                    <div class="header">
-                        <div>
-                            <h1>Welcome to</h1>
-                            <h2>Supero <span>Agrobase</span> limited</h2>
-                            <p>
-                                Supero Agrobase Limited is a fast-rising agribusiness enterprise
-                                that leverages in-depth research and development to provide
-                                farmers with high quality agricultural inputs, farm management,
-                                consultancy and agricultural laboratory services.
-                            </p>
-                            <a href="{{ url('/about_us') }}"> <button class="mybtn-2"> Read More </button></a>
+                <div class="col-lg-8">
+                    <h1><span class="p-0 m-0"> Best Agricultural Products & Services </span> </h1>
+                    <p><span> We Provide Innovative Agricultural Solutions and Quality Services to Improve Crop Yields
+                            Optimally, Contact Us Now.</span> </p>
 
-                        </div>
+                    <div class="hero-btn my-4 anim">
+                        <a class="mybtn mr-4" href="{{ url('/Our Products') }}">Products</a>
+                        <a class="mybtn ml-4" href="{{ url('/contact_us') }}">Contact</a>
                     </div>
-                </div>
-
-                <div class="col-lg-5 col-md-6 text-center">
-                    <div class="about-img-box">
-                        <img loading="lazy" class="about-img rounded img-fluid" src="{{ url('/images/office.jpg') }}"
-                            alt="SUPEROAGROBASE OFFICE">
+                    <div class="hero-icon my-5 anim">
+                        <a href="https://wa.me/message/KK2QPDR6KTLBK1">
+                            <img loading="lazy" src="{{ url('/images/icons/whatsapp.png') }}" alt="whatsapp"
+                                title="whatsapp">
+                        </a>
+                        <a href="https://twitter.com/LimitedSupero">
+                            <img loading="lazy" src="{{ url('/images/icons/twitter.png') }}" alt="twitter"
+                                title="twitter">
+                        </a>
+                        <a href="https://www.instagram.com/superoagrobase/">
+                            <img loading="lazy" src="{{ url('/images/icons/instagram.png') }}" alt="Instagram"
+                                title="Instagram">
+                        </a>
+                        <a href="https://www.facebook.com/superoagrobasedltd/">
+                            <img loading="lazy" src="{{ url('/images/icons/facebook.png') }}" alt="Facebook"
+                                title="Facebook">
+                        </a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- Hero Ends -->
 
+    <!-- About Us -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div data-aos="zoom-in" class="col-lg-6 col-md-6 d-flex align-items-stretch text-center">
+                    <div class="about-box ">
+                        <h3>Who Are We?</h3>
+                        <p>
+                            <span>Supero Agrobase Limited</span> is a fast-rising agribusiness enterprise
+                            that leverages in-depth research and development to provide
+                            farmers with high quality agricultural inputs, farm management,
+                            consultancy and agricultural laboratory services.
+                        </p>
+                        <a class="mybtn" href="{{ url('/about_us') }}"> Read More </a>
+                    </div>
+                </div>
+
+                <div data-aos="zoom-in" data-aos-delay="150"
+                    class="col-lg-6 col-md-6 d-flex align-items-stretch text-center">
+                    <div class="about-box ">
+                        <h3>Why Choose us?</h3>
+                        <p>
+                            We are a team of well trained Agric professionals; we have a vast network, strong experience in
+                            the sector and global exposure to offer high quality products and services to our clients. <br>
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    aria-hidden="true" focusable="false" width="1.3em" height="1.3em" viewBox="0 0 24 24">
+                                    <g fill="none">
+                                        <path d="M22 11l-7-9v5C3.047 7 1.668 16.678 2 22c.502-2.685.735-7 13-7v5l7-9z"
+                                            stroke="#005164" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                </svg>
+                            </i>
+                            Our Core Values are <b>Integrity</b>, <b>Respect</b>,
+                            <b>Transparency</b>, <b>Excellence</b> and <b>Team Work.</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    <!-- ========== About Us Section ========== -->
+    <!-- About Us -->
 
-    <!-- ========== Gallery Section ========== -->
-    <div class="about-gallery">
-        <div class="container">
-            <div class="row">
-                {{-- Gallery 1 --}}
-                <div class="col-lg-2"></div>
-
-                <div class="col-lg-8 text-center">
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper py-4">
-
-                            <div class="swiper-slide">
-                                <img class="swiper-lazy img-fluid" loading="lazy"
-                                    src="{{ url('images/gallery/gallery1.jpg') }}" alt="image" />
-                                {{-- <div class="swiper-lazy-preloader"></div> --}}
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid swiper-lazy" loading="lazy"
-                                    src="{{ url('images/gallery/gallery2.jpg') }}" alt="image" />
-
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid swiper-lazy" loading="lazy"
-                                    src="{{ url('images/gallery/gallery3.jpg') }}" alt="image" />
-
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid swiper-lazy" loading="lazy"
-                                    src="{{ url('images/gallery/gallery4.jpg') }}" alt="image" />
-
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid swiper-lazy" loading="lazy"
-                                    src="{{ url('images/gallery/gallery5.jpg') }}" alt="image" />
-
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid swiper-lazy" loading="lazy"
-                                    src="{{ url('images/gallery/gallery6.jpg') }}" alt="image" />
-
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid swiper-lazy" loading="lazy"
-                                    src="{{ url('images/gallery/gallery7.jpg') }}" alt="image" />
-
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid swiper-lazy" loading="lazy"
-                                    src="{{ url('images/gallery/gallery8.jpg') }}" alt="image" />
-
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid swiper-lazy" loading="lazy"
-                                    src="{{ url('images/gallery/gallery9.jpg') }}" alt="image" />
-
-                            </div>
-                        </div>
-
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-                        <!-- Add Arrows -->
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-2"></div>
-            </div>
-        </div>
-
-    </div>
-    <!-- ========== Gallery Section ========== -->
-
-    <!-- ========== Services Section ========== -->
+    <!-- Services -->
     <section id="services">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center my-2">
-                        <h2>Our <span>Services</span></h2>
-                    </div>
-                </div>
+            <div class="header">
+                <h3> What We Do </h3>
             </div>
 
-            {{-- services rows --}}
-            <div class="row my-3">
-
+            <div class="row my-5">
                 {{-- Agricourt Ventures Services --}}
-                <div class="col-lg-6 col-md-6 my-4">
+                <div data-aos="zoom-in" class="col-lg-4 col-md-6 my-4 d-flex align-items-stretch">
                     <div class="card">
-                        <div class="service-logo text-center">
-                            <img loading="lazy" src="{{ url('/images/agricourt-logo.png') }}" class="card-img-top"
-                                alt="agricourt-logo">
-                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Agricourt Ventures</h5>
-                            <p class="card-text">
-                                Through in-depth research and development, we’ve focused on
-                                serving the needs of farmers through provision of quality
-                                inputs such as high quality seeds,
-                                granular and water soluble fertilizers, irrigation systems,
-                                Growing Media (Cocopeat, Peat moss, Worm compost), seedling
-                                trays, mulch film, grow bags, modern and locally adapted
-                                green houses and net houses, green house covers...
+                            <div class="text-center">
+                                <img loading="lazy" src="{{ url('/images/icons/agricourt-logo.png') }}"
+                                    alt="agricourt-logo" title="agricourt-logo" height="100" width="100">
+                            </div>
+                            <p>
+                                At Agricourt Ventures, we provide quality Agricultural inputs such as;
                             </p>
-                            <a href="{{ url('/services/Agricourt Ventures') }}"> <button class="mybtn-2"> Read More
-                                </button></a>
-
+                            <ul data-aos="fade-up" data-aos-once="false" class="list-unstyled">
+                                <li> High quality seeds, Granular and Water soluble fertilizers.</li>
+                                <li> Irrigation systems.</li>
+                                <li> Growing Media (Cocopeat,
+                                    Peat moss, Worm compost).</li>
+                                <li> Seedling trays, mulch
+                                    film, grow bags.</li>
+                                <li> Modern and locally
+                                    adapted green houses and net houses, green
+                                    house covers.</li>
+                                <li> Shade nets, Insect nets
+                                    and many more.</li>
+                            </ul>
+                            <a class="mybtn" href="{{ url('/services/Agricourt Ventures') }}"> Read More </a>
+                            <a class="mybtn" href="{{ url('/Our Products') }}"> Products </a>
                         </div>
                     </div>
                 </div>
 
                 {{-- Harvestyield Services --}}
-                <div class="col-lg-6 col-md-6 my-4">
+                <div data-aos="zoom-in" data-aos-delay="100" class="col-lg-4 col-md-6 my-4 d-flex align-items-stretch">
                     <div class="card">
-                        <div class="service-logo text-center">
-                            <img loading="lazy" src="{{ url('/images/harvestyield-logo.png') }}" class="card-img-top"
-                                alt="harvestyield-logo">
-                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Harvestyield Farm</h5>
-                            <p class="card-text">
-                                Through our 10Ha Farmland focused on vegetable crop
-                                production i,e Tomato, Cucumber, Sweetcorn, Special
-                                Watermelon and Pepper, we provide farm management and
-                                consultancy services and partner with other reputable
-                                companies to offer soil analysis, fertilizer and manure
-                                analysis and other laboratory services which are necessary
-                                for successful growing...
+                            <div class="text-center">
+                                <img loading="lazy" src="{{ url('/images/icons/harvestyield-logo.png') }}"
+                                    alt="Harvestyield Farm Logo" title="Harvestyield Farm" height="100" width="100">
+                            </div>
+                            <p>
+                                At Harvestyield Farm, we focus on production of vegetable crops like;
                             </p>
-                            <a href="{{ url('/services/Harvestyield Farm') }}"> <button class="mybtn-2"> Read More
-                                </button></a>
-
+                            <ul data-aos="fade-up" data-aos-once="false" data-aos-delay="50" class="list-unstyled">
+                                <li> Tomato, Cucumber, Sweetcorn, Special Watermelon & Pepper.</li>
+                                <li> We also provide farm management & consultancy services, and partner with
+                                    other
+                                    reputable
+                                    companies to offer soil analysis, fertilizer and manure analysis and other
+                                    laboratory
+                                    services. </li>
+                            </ul>
+                            <a class="mybtn" href="{{ url('/services/Harvestyield Farm') }}"> Read More </a>
+                            <a class="mybtn" href="{{ url('/Our Products') }}"> Products </a>
                         </div>
                     </div>
                 </div>
 
                 {{-- Agro Input Services --}}
-                <div class="col-lg-12 my-4">
+                <div data-aos="zoom-in" data-aos-delay="200" class="col-lg-4 col-md-12 my-4 d-flex align-items-stretch">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Agro-Input products claim(s), Research and Promotion </h5>
+                            <h5 class="card-title text-center">Agro-Input Products claims, Research & Promotion.
+                            </h5>
                             <p class="card-text">
-                                The rate at which small-scale farmers and commercial farmers
-                                lose their farm produce to the negative impacts of
-                                adulterated and low quality input is enormous. We stand out
-                                and authenticate manufacturer claims on agro-input products
-                                approved by SON and NAFDAC with quality research on our 3ha
-                                research facility and promote to a network of over 10,000
-                                farmers in our database (as at December 2020)...
+                                {{-- data-aos="fade-up" data-aos-once="false" data-aos-delay="150" --}}
+                            <ul class="list-unstyled">
+                                <li class="box"> We identify problems in Production.</li>
+                                <li class="box"> Search for product(s) to solve the problem.</li>
+                                <li class="box"> Conduct trial(s) to affirm manufacturer claims about such product(s).</li>
+                                <li class="box"> Promote the product brand(s) to users (farmers) and make such
+                                    product available through our Agro-Input dealers’ network nationwide.</li>
+                            </ul>
                             </p>
-                            <a href="{{ url('/services/Agro-Input') }}"> <button class="mybtn-2"> Read More
-                                </button></a>
-
+                            <a class="mybtn" href="{{ url('/services/Agro-Input') }}"> Read More </a>
+                            <a class="mybtn" href="{{ route('contact') }}"> Contact Us </a>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Services Ends -->
+
+    {{-- latest Updates --}}
+    <section id="latest-update">
+        <div class="container">
+            <div class="header text-center">
+                <h3>
+                    Latest Updates
+                </h3>
+            </div>
+
+            <div class="row mt-5">
+                @if ($latestUpdates->count())
+                    @foreach ($latestUpdates as $latestUpdate)
+                        <div data-aos="fade-up" class="col-lg-4 col-md-6 my-3">
+                            <div class="card">
+                                <img class="img-fluid bg-secondary" loading="lazy"
+                                    src="{{ url('storage/images/latestupdates/' . $latestUpdate->image_path) }}"
+                                    alt="{{ $latestUpdate->title }}" width="300" height="300"
+                                    title="{{ $latestUpdate->title }}">
+
+                                <div class="card-body">
+                                    <h4> {{ $latestUpdate->title }}</h4>
+                                    <span>By {{ $latestUpdate->user->name }}, </span> <span> Uploaded
+                                        {{ $latestUpdate->created_at->diffForHumans() }}</span>
+
+                                    <p> {{ Str::words($latestUpdate->description, 10, ' ...') }} </p>
+
+                                    <div class="mt-1">
+                                        <a class="mybtn btn-a"
+                                            href="{{ route('latestupdate.show', $latestUpdate->slug) }}">
+                                            Read
+                                            More </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+
+                <div data-aos="fade-up" data-aos-delay="100" class="col-lg-4 col-md-12 col-sm-12">
+                    {{-- comment --}}
+                    <div class="comment my-4 p-4">
+                        <h4>Let's hear from you</h4>
+                        <form action="{{ route('post.blog') }}" class="comment-form" method="POST"
+                            enctype="application/x-www-form-urlencoded">
+                            @csrf
+                            @error('body')
+                                <p>{{ $message }}</p>
+                            @enderror
+
+                            <div class=" form-group">
+                                <textarea class="w-100 p-2" id="textarea" name="body" rows="5"
+                                    placeholder="Write your comments here" value="{{ old('body') }}" required></textarea>
+                            </div>
+                            <div class="my-2">
+                                <button class="mybtn w-100 btn-sub" type="submit" title="Send Message">
+                                    POST
+                                </button>
+                            </div>
+                        </form>
+
+                        @if ($posts->count())
+                            @foreach ($posts as $post)
+                                <div class="comment-box mt-3">
+                                    @if ($post->user)
+                                        <img loading="lazy" class="img-fluid"
+                                            src="{{ $post->user->avatar ?? url('/images/icons/user.png') }}" alt=""
+                                            width="16" height="16">
+                                        <a class="text-info"
+                                            href="{{ route('user.post', $post->user) }}">{{ $post->user->name }}</a>
+                                        <span class="">{{ $post->created_at->diffForHumans() }}</span>
+                                        <p>{{ $post->body }}</p>
+                                    @endif
+                                    {{-- like and unlike comments --}}
+                                    <div class="like">
+                                        @auth()
+                                            @if (!$post->likedBy(auth()->user()))
+                                                <form action="{{ route('post.like', $post) }}" method="post"
+                                                    class="d-inline">
+                                                    @csrf
+                                                    <button type="submit">Like</button>
+                                                    <span> {{ $post->likes->count() }}
+                                                        {{ Str::plural('Like', $post->likes->count()) }}</span>
+                                                </form>
+                                            @else
+                                                <form action="{{ route('post.unlike', $post) }}" method="post"
+                                                    class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit">Unlike</button>
+                                                    <span> {{ $post->likes->count() }}
+                                                        {{ Str::plural('Like', $post->likes->count()) }}</span>
+                                                </form>
+                                            @endif
+                                        @endauth
+                                    </div>
+                                </div>
+                            @endforeach
+                            {{ $posts->links() }}
+                        @else
+                            <div class="comment-box mt-4">
+                                <p>No Comments</p>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
 
             </div>
 
+            <div class="row mt-5">
+                <div data-aos="fade-up" class="col-lg-6 col-md-6 mt-5">
+                    <div class="card weather-text border-0 rounded-0">
+                        <h3>Weather Update</h3>
+                        <p>Stay up to date with the current weather condition in your location</p>
+                        <em><q>There's no such thing as good weather, or bad weather. There's just weather and your
+                                attitude towards it. -- Louise Hay </q></em>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100" class="col-lg-6 col-md-6 mt-5 ">
+                    <div class="shadow-sm p-3  weather border-0  d-flex justify-content-between align-items-stretch">
+                        <div class="div">
+                            @php date_default_timezone_set("Africa/Lagos") @endphp
+                            <h5> As of today {{ date('Y-m-d g:iA') }} </h5>
+                            <h1>{{ json_encode($news['main']['temp']) }} <sup>0</sup>C </h1>
+                            <h4 class="text-light">{{ trim(json_encode($news['weather'][0]['main']), '"') }}</h4>
+                            <p> Probably
+                                {{ trim(json_encode($news['weather'][0]['description']), '"') }}</p>
+                        </div>
+
+                        <div class="">
+                            <img loading="lazy" class="img-fluid d-inline"
+                                src="{{ url('http://openweathermap.org/img/wn/' . trim(json_encode($news['weather'][0]['icon']), '"') . '@2x.png') }}"
+                                alt="">
+                            <p>{{ json_encode($news['main']['temp_min']) }}/{{ json_encode($news['main']['temp_max']) }}
+                                <sup>0</sup>C
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    <!-- ========== Services Section Ends========== -->
+    {{-- latest Updates --}}
 
-
-    <!-- ========== Products Section ========== -->
+    <!-- Products Section -->
     <section id="products">
         <div class="container">
-
-            <div class="text-center my-4">
-                <h2> Harvestyield <span>Products</span></h2>
+            <div class="header">
+                <h3> Our Products </h3>
             </div>
-
-            <!-- ========== Harvestyield Products Section =========== -->
-            <div class="row text-center my-4">
-
-                <x-harvestyield-prd product="Cucumber" />
-                <x-harvestyield-prd product="Tomatoes" />
-                <x-harvestyield-prd product="Sweetcorn" />
-                <x-harvestyield-prd product="Pepper" />
-                <x-harvestyield-prd product="Watermelon" />
-
-            </div>
-
-            <div class="text-center my-4">
-                <h2>Agricourt <span>Products</span></h2>
-            </div>
-
-            <!-- ========== Agricourt Products Section =========== -->
-            <div class="row text-center my-4">
-                {{-- Products pix are 300px by 300px --}}
-                <x-agricourt-prd product="Irrigation Drips" />
-                <x-agricourt-prd product="Seeds" />
-                <x-agricourt-prd product="Herbicides" />
-                <x-agricourt-prd product="Fungicides" />
-                <x-agricourt-prd product="Insecticides" />
-                <x-agricourt-prd product="Cocopeat" />
-                <x-agricourt-prd product="Greenhouse" />
-                <x-agricourt-prd product="Seedling Tray" />
-                <x-agricourt-prd product="Seedlings" />
-
-            </div>
-
-        </div>
-    </section>
-    <!-- ========== Products Section Ends========== -->
-
-    {{-- ========= Order Update ========== --}}
-    <section id="order-update">
-        <div class="container">
+            <h4 class="mt-4 mb-2">Harvestyield Products and Agricourt Products</h4>
             <div class="row">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10  text-center">
-                    <img loading="lazy" src="{{ url('/images/sweetcorn.jpg') }}" alt="Place order now"
-                        class="img-fluid my-3 rounded">
-
-                    @include('layouts/order')
-                </div>
-                <div class="col-lg-1"></div>
+                @foreach ($products as $product)
+                    <div class="col-lg-2 col-md-4 col-sm-6 xs">
+                        <div class="card m-2">
+                            <div class="product-box">
+                                <img loading="lazy" src="{{ url('/images/products/' . $product->name . '.jpg') }}"
+                                    class="card-img-top bg-secondary" alt="{{ $product->name }}" height="300" width="300"
+                                    title="{{ $product->name }}">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        {{ $product->name }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
+
         </div>
     </section>
-    {{-- ========= Order Update ========== --}}
 
-    {{-- ========== Contact Section ========== --}}
-    @include('layouts.contact')
-    {{-- ========== Contact Section ========== --}}
+    <x-page-component
+        description="Do you want to make enquiry about any of our products and services? Please feel free to contact us,  we'll get back to you promptly. Cheers!"
+        link="contact_us" linktext="Contact Us" />
+    <!-- Products Ends -->
 
+    {{-- Order Update --}}
+    <div id="order-update">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div data-aos="fade-up" class="col-lg-4 col-md-6 text-center">
+                    <img loading="lazy" src="{{ url('/images/office.jpg') }}" alt="Our Office is open"
+                        class="img-fluid my-3 " title="Office address" height="350" width="350">
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100" class="col-lg-4 col-md-6 text-center">
+                    <img loading="lazy" src="{{ url('/images/takeorder.jpg') }}" alt="Place order now"
+                        class="img-fluid my-3 " title="place order now" height="350" width="350">
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Order Update --}}
 @endsection
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/ScrollTrigger.min.js"></script>
+    <script>
+        // load gsap
+        gsap.registerPlugin(ScrollTrigger);
+        var rule = CSSRulePlugin.getRule(".hero span:after");
+        // var box = gsap.timeline({
+        //     scrollTrigger: {
+        //         trigger: ".box",
+        //         markers: true,
+        //         start: "top 70%",
+        //         end: "bottom 20%",
+        //         scrub: true
+        //     }
+        // });
+        // box.from(".box", {
+        //     y: 50,
+        //     opacity: 0,
+        //     duration: 0.5,
+        //     stagger: 0.2,
+        // })
+
+        var tl = gsap.timeline({
+            defaults: {
+                duration: 0.6
+            }
+        });
+        tl.to(rule, {
+                cssRule: {
+                    scaleY: 0
+                }
+            })
+            .from(".anim", {
+                y: 50,
+                stagger: 0.2,
+                opacity: 0
+            });
+
+        $(function() {
+            @if (Session::has('success'))
+                Swal.fire({
+                icon: 'success',
+                title: 'Great!',
+                text: '{{ Session::get('success') }}'
+                })
+            @endif
+        });
+    </script>
+@endpush

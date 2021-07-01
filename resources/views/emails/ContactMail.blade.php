@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+@component('mail::message')
+<h2> {{ $ContactData['subject'] }} </h2>
+<p> Hi, I'm {{ $ContactData['name'] }}</p>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> SuperoAgrobase Limited</title>
-</head>
+<p> {{ $ContactData['message'] }} </p>
 
-<body>
-    <h3> Subject: {{ $ContactData['subject'] }} </h3>
 
-    <p> <b>Name:</b> {{ $ContactData['name'] }}</p>
-    <p> <b>Email:</b> {{ $ContactData['email'] }} </p>
-    <p> <b> Phone Number:</b> {{ $ContactData['phone'] }} </p>
-    <p> <b>Message:</b> {{ $ContactData['message'] }} </p>
+Thanks,<br>
+{{ config('app.name') }}
 
-    <p>Reply: <b> <a href="mailto:{{ $ContactData['email'] }}"> {{ $ContactData['name'] }} </a> </b>
-    </p>
+@component('mail::button', ['url' => 'mailto:'.$ContactData['email']])
+Reply
+@endcomponent
 
-    <p>
-        Check out our products <a href="https://products.superoagrobase.com">Click Here</a>
-    </p>
-
-</body>
-
-</html>
+@component('mail::button', ['url' => 'tel:'.$ContactData['phone']])
+Call
+@endcomponent
+@endcomponent

@@ -2,11 +2,13 @@
 @section('content')
     @include('layouts/inner-page')
 
-    <section id="page">
+    <section id="service-page">
         <div class="container">
-            <h3>
-                Agro-Input Products Claim(s), Research & Promotion
-            </h3>
+            <div class="mb-3">
+                <h3 class="mb-4"> Agro-Input</h3>
+                <h5> Products Claim(s), Research & Promotion</h5>
+            </div>
+
             <p>
                 The rate at which small-scale farmers and commercial farmers lose their farm produce to the negative impacts
                 of adulterated and low quality input is enormous. We stand out and authenticate manufacturer claims on
@@ -19,10 +21,9 @@
                 manufacturer claims about such product, promote the product brand(s) to users (farmers) and make such
                 product available through our Agro-input dealers’ network nationwide
             </p>
+            <x-page-component description="We have fresh Agricultural Products for you, Check them out" link="Our Products"
+                linktext="Products" />
         </div>
-
     </section>
-    @include('layouts/order')
-    @include('layouts/contact')
 
 @endsection

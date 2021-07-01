@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Mail\NewsLetter;
-use App\Mail\SendMail;
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Newsletter;
 use Session;
 
 class MailController extends Controller
@@ -19,7 +19,7 @@ class MailController extends Controller
 
     public function contactMail(Request $request)
     {
-        $request->validate([
+        $ContactData = $request->validate([
             'name' => 'required|string|max:20|min:3',
             'phone' => 'required|numeric|digits:11',
             'email' => 'required|email:rfc,strict,filter',
@@ -42,21 +42,11 @@ class MailController extends Controller
             'phone.integer' => 'Enter a valid phone number',
         ]);
 
-        $ContactData = [
-            'name' => htmlspecialchars($request->name),
-            'phone' => htmlspecialchars($request->phone),
-            'email' => htmlspecialchars($request->email),
-            'subject' => htmlspecialchars($request->subject),
-            'message' => htmlspecialchars($request->message),
-        ];
-
         $user = $ContactData['name'];
         $message_sent = "Thank you for contacting us. We will get back to you promptly.";
         $title = "Thank You";
-        $to = "contact@superoagrobase.com";
-
-        Mail::to($to)->send(new SendMail($ContactData));
-        return view('/thank', compact('title', 'user', 'message_sent'));
+        Mail::to('contact@superoagrobase.com')->send(new ContactMail($ContactData));
+        return view('thank', compact('title', 'user', 'message_sent'));
     }
 
     public function newsLetter(Request $request)
@@ -64,24 +54,11 @@ class MailController extends Controller
         $title = "Thank You";
         $message_sent = "Thank you for subscribing to our newsletter";
         $newsLetter = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
+            'email' => 'required|email:filter',
         ]);
 
-        $newsLetterSubs = [
-            'name' => htmlspecialchars($request->name),
-            'email' => htmlspecialchars($request->email),
-        ];
+        Newsletter::subscribe($newsLetter['email']);
 
-        $user = $newsLetterSubs['name'];
-        $user_email = $newsLetter['email'];
-
-        $to = "inventorymanager@superoagrobase.com";
-
-        foreach ([$user_email, $to] as $rt) {
-            Mail::to($rt)->send(new NewsLetter($newsLetterSubs));
-        };
-
-        return view('/thank', compact('title', 'user', 'message_sent'));
+        return redirect()->route('home')->with('success', 'You have successfully subscribed to our mailing list.');
     }
 }
