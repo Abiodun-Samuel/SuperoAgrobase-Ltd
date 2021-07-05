@@ -21,40 +21,54 @@
                             </div>
                         @endif
 
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                <p>{{ session('status') }}</p>
-                            </div>
-                        @endif
+                        <div class="card-body">
 
-                        <form class="mt-4" action="{{ route('latestupdate.store') }}" method="post"
-                            enctype="multipart/form-data">
-                            @csrf
+                            <form action="{{ route('latestupdate.store') }}" method="post" enctype="multipart/form-data">
+                                @csrf
 
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1"> Update Title</label>
-                                <input type="text" name="title" value="{{ old('title') }}" class="form-control"
-                                    id="exampleFormControlInput1">
-                            </div>
+                                @if (session('update'))
+                                    <div class="alert alert-success">
+                                        <p>{{ session('update') }}</p>
+                                    </div>
+                                @endif
 
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Update Description</label>
-                                <textarea name="description" value="{{ old('description') }}" class="form-control"
-                                    id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
+                                @error('title')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
 
-                            <div class="form-group">
-                                <label for="exampleFormControlFile1">Picture</label>
-                                <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
-                            </div>
-                            <small><em>(Pictures size must not be greater than 2mb)</em></small>
-                            <small><em>(All fields are required)</em></small>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1"> Update Title</label>
+                                    <input type="text" name="title" value="{{ old('title') }}" class="form-control"
+                                        id="exampleFormControlInput1">
+                                </div>
 
-                            <div class="form-group mt-2">
-                                <button class="mybtn w-100" type="submit">POST UPDATE</button>
-                            </div>
+                                @error('description')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
 
-                        </form>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Update Description</label>
+                                    <textarea name="description" value="{{ old('description') }}" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+
+                                @error('file')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Picture</label>
+                                    <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
+                                </div>
+                                <small><em>(Pictures size must not be greater than 2mb)</em></small>
+                                <small><em>(All fields are required)</em></small>
+
+                                <div class="form-group mt-2">
+                                    <button class="mybtn w-100" type="submit">POST UPDATE</button>
+                                </div>
+
+                            </form>
+                        </div>
 
                     </div>
                 </div>

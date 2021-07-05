@@ -3,10 +3,10 @@
 
 <head>
 
-    <title> {{ $title ?? 'Home' }} | SuperoAgrobase Limited</title>
+    <title> <?php echo e($title ?? 'Home'); ?> | SuperoAgrobase Limited</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <meta
         content="Supero Agrobase Limited is an indigenous company in Nigeria with deep understanding of the needs and challenges of Nigerian farmers. We deal with  Agro - Input products, claims, research and Promotion, Sales of Agro input Products (AgriCourt Ventures) and Production of Vegetable Crops (HarvestYield Farm)"
@@ -16,21 +16,21 @@
         content="irrigation cultivation husbandry horticulture crop biofuel farm animal husbandry farming cultivate agribusiness food domestication agricultural manure  tillage monoculture forestry livestock harvest agronomy pesticide cotton wheat crop rotation dairy aquaculture sow overcrop education raw material genetically modified organism selective breeding climate plow farmer plant fertilize fiber grow fertile crescent"
         name="keywords" />
 
-    {{-- Google fonts --}}
+    
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
-    <link href="{{ asset('/images/favicon.png') }}" rel="icon" />
-    <link href=" {{ asset('/images/apple-touch-icon.png') }}" rel="apple-touch-icon" />
+    <link href="<?php echo e(asset('/images/favicon.png')); ?>" rel="icon" />
+    <link href=" <?php echo e(asset('/images/apple-touch-icon.png')); ?>" rel="apple-touch-icon" />
 
     <!-- Style libraries -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="{{ asset('/css/app.css?ver=1.0') }}" />
-    @stack('styles')
+    <link rel="stylesheet" href="<?php echo e(asset('/css/app.css?ver=1.0')); ?>" />
+    <?php echo $__env->yieldPushContent('styles'); ?>
 
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="{{ url('style.css?ver=1.0') }}" />
-    {{-- <link rel="stylesheet" href="{{ url('/css/style.css?ver=1.0') }}" /> --}}
+    <link rel="stylesheet" href="<?php echo e(url('style.css?ver=1.0')); ?>" />
+    
 
 </head>
 
@@ -41,8 +41,8 @@
             <div class="container">
 
                 <div>
-                    <a class="cart px-3" href="{{ url('/') }}">
-                        <img class="img-fluid" src="{{ url('/images/icons/trolley.png') }}" alt="cart" width="16"
+                    <a class="cart px-3" href="<?php echo e(url('/')); ?>">
+                        <img class="img-fluid" src="<?php echo e(url('/images/icons/trolley.png')); ?>" alt="cart" width="16"
                             height="16">
                         <sup class="text-danger">1</sup>
                         <span class="cart-text">Cart</span>
@@ -53,30 +53,30 @@
                     <a class="dropdown-toggle user" href="" id="navbarDropdownMenuLink" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                        <span><img class="" src="{{ auth()->user()->avatar ?? url('/images/icons/user.png') }}"
-                                alt="{{ auth()->user()->name ?? 'Guest' }}" width="16" height="16">
-                            {{ auth()->user()->name ?? 'Guest' }} </span>
+                        <span><img class="" src="<?php echo e(auth()->user()->avatar ?? url('/images/icons/user.png')); ?>"
+                                alt="<?php echo e(auth()->user()->name ?? 'Guest'); ?>" width="16" height="16">
+                            <?php echo e(auth()->user()->name ?? 'Guest'); ?> </span>
                     </a>
 
                     <li class="dropdown-menu list-unstyled" aria-labelledby="navbarDropdownMenuLink">
-                        @guest
-                            <a class="dropdown-item" href="{{ route('register') }}">
+                        <?php if(auth()->guard()->guest()): ?>
+                            <a class="dropdown-item" href="<?php echo e(route('register')); ?>">
                                 Register
                             </a>
-                            <a class="dropdown-item" href="{{ route('login') }}">
+                            <a class="dropdown-item" href="<?php echo e(route('login')); ?>">
                                 Login
                             </a>
-                        @endguest
-                        @auth
-                            <form action="{{ route('logout') }}" method="post">
-                                @csrf
+                        <?php endif; ?>
+                        <?php if(auth()->guard()->check()): ?>
+                            <form action="<?php echo e(route('logout')); ?>" method="post">
+                                <?php echo csrf_field(); ?>
                                 <button class="w-100" type="submit">
                                     <a class="dropdown-item">
                                         Logout
                                     </a>
                                 </button>
                             </form>
-                        @endauth
+                        <?php endif; ?>
                     </li>
                 </div>
             </div>
@@ -84,8 +84,8 @@
 
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ url('/images/logo.png') }}" alt="Superoagrobase logo">
+                <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
+                    <img src="<?php echo e(url('/images/logo.png')); ?>" alt="Superoagrobase logo">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -105,11 +105,11 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link active" href="{{ url('/') }}">Home <span
+                            <a class="nav-link active" href="<?php echo e(url('/')); ?>">Home <span
                                     class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/about_us') }}">About</a>
+                            <a class="nav-link" href="<?php echo e(url('/about_us')); ?>">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button"
@@ -117,31 +117,31 @@
                                 Services
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="{{ url('services/Agro-Input') }}">
+                                <a class="dropdown-item" href="<?php echo e(url('services/Agro-Input')); ?>">
                                     Agro-Input
                                 </a>
-                                <a class="dropdown-item" href="{{ url('services/Agricourt Ventures') }}">
+                                <a class="dropdown-item" href="<?php echo e(url('services/Agricourt Ventures')); ?>">
                                     AgriCourt Ventures
                                 </a>
-                                <a class="dropdown-item" href="{{ url('services/Harvestyield Farm') }}">
+                                <a class="dropdown-item" href="<?php echo e(url('services/Harvestyield Farm')); ?>">
                                     HarvestYield Farm
                                 </a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/Our Products') }}"> Products </a>
+                            <a class="nav-link" href="<?php echo e(url('/Our Products')); ?>"> Products </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('latestupdate.index') }}"> Updates </a>
+                            <a class="nav-link" href="<?php echo e(route('latestupdate.index')); ?>"> Updates </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blog.index') }}"> Blog </a>
+                            <a class="nav-link" href="<?php echo e(route('blog.index')); ?>"> Blog </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('academy.home') }}"> HarvestYield Academy </a>
+                            <a class="nav-link" href="<?php echo e(route('academy.home')); ?>"> HarvestYield Academy </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/contact_us') }}"> Contact</a>
+                            <a class="nav-link" href="<?php echo e(url('/contact_us')); ?>"> Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -150,7 +150,7 @@
     </header>
     <!-- Header Ends -->
 
-    @yield("content")
+    <?php echo $__env->yieldContent("content"); ?>
 
     <!--  Footer  -->
     <footer id="footer">
@@ -160,7 +160,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Supero Agrobase limited</h6>
-                            <img loading="lazy" class="img-fluid" src="{{ url('/images/logo.jpg') }}"
+                            <img loading="lazy" class="img-fluid" src="<?php echo e(url('/images/logo.jpg')); ?>"
                                 alt="Company logo">
                             <p>
                                 Supero Incorporation Limited is a fast-rising agribusiness
@@ -178,41 +178,41 @@
                             <h6 class="card-title">Services</h6>
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href="{{ url('services/Agro-Input') }}"> Agro-Input </a>
+                                    <a href="<?php echo e(url('services/Agro-Input')); ?>"> Agro-Input </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('services/Agricourt Ventures') }}">
+                                    <a href="<?php echo e(url('services/Agricourt Ventures')); ?>">
                                         AgriCourt Ventures</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('services/Harvestyield Farm') }}">
+                                    <a href="<?php echo e(url('services/Harvestyield Farm')); ?>">
                                         HarvestYield Farm
                                     </a>
                                 </li>
                             </ul>
                             <h6 class="card-title">Quick links</h6>
                             <div class="quick-links">
-                                <a href="{{ url('/') }}">Home</a>
-                                <a href="{{ url('/about_us') }}">About </a>
-                                <a href="{{ url('/Our Products') }}">Products</a>
-                                <a href="{{ url('/contact_us') }}">Contact</a>
+                                <a href="<?php echo e(url('/')); ?>">Home</a>
+                                <a href="<?php echo e(url('/about_us')); ?>">About </a>
+                                <a href="<?php echo e(url('/Our Products')); ?>">Products</a>
+                                <a href="<?php echo e(url('/contact_us')); ?>">Contact</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {{-- newsletter --}}
+                
                 <div class="col-lg-4 col-md-12 mb-4 footer-box d-flex align-items-stretch">
                     <div class="card">
                         <div class="card-body">
 
-                            @if ($errors->any())
+                            <?php if($errors->any()): ?>
                                 <div class="alert alert-danger">
-                                    @foreach ($errors->all() as $error)
-                                        <p>{{ $error }}</p>
-                                    @endforeach
+                                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <p><?php echo e($error); ?></p>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
-                            @endif
+                            <?php endif; ?>
 
                             <h6>Newsletter </h6>
                             <p>
@@ -220,13 +220,13 @@
                                 your
                                 inbox. Never miss important opportunities</p>
 
-                            <form action="{{ route('newsletter') }}" method="POST"
+                            <form action="<?php echo e(route('newsletter')); ?>" method="POST"
                                 enctype="application/x-www-form-urlencoded">
-                                @csrf
+                                <?php echo csrf_field(); ?>
 
-                                {{-- Email --}}
+                                
                                 <input type="email" name="email" placeholder="Enter Your Email"
-                                    value="{{ old('email') }}" required />
+                                    value="<?php echo e(old('email')); ?>" required />
 
                                 <button class="my-2" type="submit" title="Subscribe">
                                     Subscribe
@@ -254,7 +254,7 @@
     </footer>
     <!-- Footer  Ends  -->
 
-    {{-- Popup Display --}}
+    
     <div class="col-lg-12 contentBox">
         <div class="card">
             <i class="close text-right" style="cursor: pointer">
@@ -268,12 +268,12 @@
                 <p class="card-text"> Do you want valuable tips on how to improve your farm for maximum yields? <br>
                     Do you want updates on our products, exclusive offers, and freebies? <br> We've got you covered.
                 </p>
-                <form class="d-inline" action="{{ route('newsletter') }}" method="POST"
+                <form class="d-inline" action="<?php echo e(route('newsletter')); ?>" method="POST"
                     enctype="application/x-www-form-urlencoded">
-                    @csrf
-                    {{-- Email --}}
+                    <?php echo csrf_field(); ?>
+                    
                     <input class="w-100" type="email" name="email" placeholder="Enter Your Email"
-                        value="{{ old('email') }}" required autocomplete="on" />
+                        value="<?php echo e(old('email')); ?>" required autocomplete="on" />
                     <button class="w-100 mt-3" type="submit" title="Subscribe">
                         SUBSCRIBE
                     </button>
@@ -281,7 +281,7 @@
             </div>
         </div>
     </div>
-    {{-- Popup Display --}}
+    
 
     <!-- back-to-top -->
     <a id="back-to-top" title="Back to top">
@@ -293,21 +293,22 @@
         </svg>
     </a>
 
-    @include('cookie-consent::index')
+    <?php echo $__env->make('cookie-consent::index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <!-- Script -->
-    <script src="{{ asset('/js/app.js?ver=1.0') }}"></script>
+    <script src="<?php echo e(asset('/js/app.js?ver=1.0')); ?>"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
-    @stack('scripts')
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 
     <!-- custom script file -->
-    {{-- <script src="{{ url('script.js?ver=1.0') }}"></script> --}}
-    <script src="{{ url('/js/script.js?ver=1.0') }}"></script>
+    
+    <script src="<?php echo e(url('/js/script.js?ver=1.0')); ?>"></script>
 
 </body>
 
 </html>
+<?php /**PATH C:\Users\abiod\Desktop\Laravel Projects\superoinc\resources\views/layouts/app.blade.php ENDPATH**/ ?>

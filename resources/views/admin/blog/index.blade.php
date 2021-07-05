@@ -7,19 +7,13 @@
     <section id="blog">
         <div class="container">
 
-            @if (session('status'))
-                <div class="alert alert-success my-3">
-                    <p>{{ session('status') }}</p>
-                </div>
-            @endif
-
-            @if (isset(Auth::user()->is_admin))
+            {{-- @if (isset(Auth::user()->is_admin))
                 <div class="col-lg-6 my-3">
                     <a class="mybtn btn-more py-2 px-4" href="{{ route('blog.create') }}">
                         Add More Blogs
                     </a>
                 </div>
-            @endif
+            @endif --}}
 
             <div class="row my-3">
                 @if ($blogs->count())
@@ -27,8 +21,8 @@
                         <div data-aos="fade-up" class="col-lg-4 col-md-6 col-sm-6 my-5">
                             <div class="card">
                                 <img class="img-fluid bg-secondary mb-2" loading="lazy"
-                                    src="{{ url('/storage/images/blogs/' . $blog->image_path) }}"
-                                    alt="{{ $blog->title }}" width="300" height="300" title="{{ $blog->title }}">
+                                    src="{{ url('/images/blogs/' . $blog->image_path) }}" alt="{{ $blog->title }}"
+                                    width="300" height="300" title="{{ $blog->title }}">
 
                                 <div class="card-body">
                                     <h4> {{ Str::upper($blog->title) }}</h4>
@@ -41,21 +35,20 @@
                                         <a class="mybtn btn-more py-2 px-3" href="{{ route('blog.show', $blog->slug) }}">
                                             Read More
                                         </a>
-
-                                        @if (isset(Auth::user()->is_admin))
-                                            <a class="mybtn rounded-pill bg-transparent admin mx-2"
+                                        {{-- @if (auth()->user()->is_admin == 1)
+                                            <a class="text-danger bg-transparent mx-2"
                                                 href="{{ route('blog.edit', $blog->slug) }}">
-                                                Edit
+                                                <u>Edit</u>
                                             </a>
-
                                             <form class="d-inline" action="{{ route('blog.destroy', $blog->slug) }}"
                                                 method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="mybtn admin bg-transparent rounded-pill mx-2"
-                                                    type="submit">Delete</button>
+                                                <button class="text-danger border-0 outline-0 bg-transparent mx-2"
+                                                    type="submit">
+                                                    <u>Delete</u> </button>
                                             </form>
-                                        @endif
+                                        @endif --}}
                                     </div>
                                 </div>
                             </div>

@@ -18,6 +18,7 @@ class HYAcademy extends Model
     protected $fillable = [
         'name',
         'phone',
+        'email',
         'gender',
         'address',
         'education',

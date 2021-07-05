@@ -7,21 +7,9 @@
     <section id="latestupdate-page">
         <div class="container">
 
-            @if (session('status'))
-                <div class="alert alert-success my-2">
-                    <p>{{ session('status') }}</p>
-                </div>
-            @endif
-
-            <div class="row my-3">
-                <div class="col-lg-6">
-                    @if (isset(Auth::user()->is_admin))
-                        <a class="mybtn btn-a py-2 px-3" href="{{ route('latestupdate.create') }}">
-                            Add More Updates
-                        </a>
-                    @endif
-                </div>
-            </div>
+            {{-- @if (auth()->user()->is_admin == 1)
+                <a href="{{ route('latestupdate.create') }}">Add More Blogs</a>
+            @endif --}}
 
             <div class="row my-3">
                 <div data-aos="fade-up" class="col-lg-8 d-flex flex-wrap">
@@ -30,7 +18,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 my-3">
                                 <div class="card">
                                     <img class="img-fluid bg-secondary mb-2" loading="lazy"
-                                        src="{{ url('/storage/images/latestupdates/' . $latestUpdate->image_path) }}"
+                                        src="{{ url('/images/latestupdates/' . $latestUpdate->image_path) }}"
                                         alt="{{ $latestUpdate->title }}" width="300" height="300"
                                         title="{{ $latestUpdate->title }}">
 
@@ -46,20 +34,21 @@
                                                 href="{{ route('latestupdate.show', $latestUpdate->slug) }}">
                                                 Read More
                                             </a>
-
-                                            @if (isset(Auth::user()->is_admin))
-                                                <a class="mybtn mx-1 rounded-pill text-center"
+                                            {{-- @if (auth()->user()->is_admin == 1)
+                                                <a class="text-danger mx-1 text-center"
                                                     href="{{ route('latestupdate.edit', $latestUpdate->slug) }}">
-                                                    Edit </a>
+                                                    <u>Edit</u> </a>
 
                                                 <form class="d-inline"
                                                     action="{{ route('latestupdate.destroy', $latestUpdate->slug) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="mybtn bg-transparent rounded-pill" type="submit">Delete</button>
+                                                    <button class="text-danger border-0 outline-0 bg-transparent"
+                                                        type="submit">
+                                                        <u>Delete</u></button>
                                                 </form>
-                                            @endif
+                                            @endif --}}
                                         </div>
                                     </div>
                                 </div>

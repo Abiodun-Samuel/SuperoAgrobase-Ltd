@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <section id="hya-student">
         <div class="container">
             <div class="row mt-5">
@@ -8,24 +6,24 @@
                     <div class="card">
                         <div class="card-header">My Dashboard</div>
                         <div class="card-body dashboard">
-                            @if (!empty(auth()->user()->hyacademy) && auth()->user()->hyacademy !== null)
+                            <?php if(!empty(auth()->user()->hyacademy) && auth()->user()->hyacademy !== null): ?>
                                 <h5>Admission Details:</h5>
                                 <hr>
-                                <p><span>Add No: </span> {{ auth()->user()->hyacademy->admission_no }}</p>
-                                <p><span>Name: </span> {{ auth()->user()->hyacademy->name }}</p>
-                                <p><span>Email: </span> {{ auth()->user()->email }}</p>
-                                <p><a href="{{ url('/images/HYAcademy/' . auth()->user()->hyacademy->name . '.pdf') }}"
+                                <p><span>Add No: </span> <?php echo e(auth()->user()->hyacademy->admission_no); ?></p>
+                                <p><span>Name: </span> <?php echo e(auth()->user()->hyacademy->name); ?></p>
+                                <p><span>Email: </span> <?php echo e(auth()->user()->email); ?></p>
+                                <p><a href="<?php echo e(url('/images/HYAcademy/' . auth()->user()->hyacademy->name . '.pdf')); ?>"
                                         download> <u class="text-danger">Download</u> </a> your admission letter</P>
 
                                 <div class="mt-4">
                                     <a class="hya-class" href="https://chat.whatsapp.com/GZPPN5XoSDXGtmoBcNPNYr"
                                         target="_blank"><u class="text-danger"> Online Class </u> </a>
                                 </div>
-                            @else
-                                <p> You are not a registered student. <a href="{{ route('academy.register') }}">Register
+                            <?php else: ?>
+                                <p> You are not a registered student. <a href="<?php echo e(route('academy.register')); ?>">Register
                                         Now</a>
                                 </p>
-                            @endif
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -55,18 +53,25 @@
                                 <div class="card-header"> Submit Assignment </div>
                                 <div class="card-body">
 
-                                    <form action="{{ route('academy.assignment') }}" method="post"
+                                    <form action="<?php echo e(route('academy.assignment')); ?>" method="post"
                                         enctype="multipart/form-data">
-                                        @csrf
-                                        @if (session('assignment'))
+                                        <?php echo csrf_field(); ?>
+                                        <?php if(session('assignment')): ?>
                                             <div class="alert alert-success">
-                                                <p>{{ session('assignment') }}</p>
+                                                <p><?php echo e(session('assignment')); ?></p>
                                             </div>
-                                        @endif
+                                        <?php endif; ?>
 
-                                        @error('assignment_file')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                        <?php $__errorArgs = ['assignment_file'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <div class="alert alert-danger"><?php echo e($message); ?></div>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
 
                                         <label for="assignment_file"> Upload file
                                             <em>(Format:pdf,docx,doc,jpeg,jpg. Max size:2048)</em></label>
@@ -81,22 +86,29 @@
                             <div class="card">
                                 <div class="card-header"> Send Message</div>
                                 <div class="card-body">
-                                    <form action="{{ route('academy.message') }}" method="post"
+                                    <form action="<?php echo e(route('academy.message')); ?>" method="post"
                                         enctype="application/x-www-form-urlencoded">
-                                        @csrf
+                                        <?php echo csrf_field(); ?>
 
-                                        @if (session('studentmessage'))
+                                        <?php if(session('studentmessage')): ?>
                                             <div class="alert alert-success">
-                                                <p>{{ session('studentmessage') }}</p>
+                                                <p><?php echo e(session('studentmessage')); ?></p>
                                             </div>
-                                        @endif
+                                        <?php endif; ?>
 
-                                        @error('student_message')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                        <?php $__errorArgs = ['student_message'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <div class="alert alert-danger"><?php echo e($message); ?></div>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         <label for="student_message"> Message </label>
                                         <textarea class="w-100 my-2" name="student_message" id="student_message" cols="30"
-                                            rows="2">  {{ old('student_message') }}</textarea>
+                                            rows="2">  <?php echo e(old('student_message')); ?></textarea>
                                         <input class="w-100" type="submit" value="Send">
                                     </form>
                                 </div>
@@ -107,16 +119,10 @@
             </div>
         </div>
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
-{{-- <section id="hya-student">
-    <div class="container">
-        <div class="row ">
-            <div class="col-lg-6 col-md-6 mt-5">
 
-            </div>
-        </div>
-    </div>
-</section> --}}
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\abiod\Desktop\Laravel Projects\superoinc\resources\views/HYAcademy/students.blade.php ENDPATH**/ ?>

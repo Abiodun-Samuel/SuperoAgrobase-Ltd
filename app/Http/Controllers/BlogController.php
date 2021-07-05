@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Image;
 use App\Models\Blog;
-use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Image;
 
 class BlogController extends Controller
 {
@@ -54,19 +54,19 @@ class BlogController extends Controller
         $image_resize->resize(300, 300, function ($const) {
             $const->aspectRatio();
         });
-        $image_resize->save('storage/images/blogs/' . $filename);
-        // $image_resize->save(storage_path('app/public/images/blogs/' . $filename));
+        // save image
+        $image_resize->save(public_path('/images/blogs/'. $filename, 80));
 
         // store blog in database
         Blog::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'slug' => SlugService::createSlug(Blog::class, 'slug', $request->title),
+            'slug' => Str::slug($request->title),
             'image_path' => $filename,
             'user_id' => auth()->user()->id,
         ]);
 
-        return redirect()->route('blog.index')->with("status", 'Your blog has been uploaded successfully.');
+        return redirect()->route('admin')->with("status", 'Your blog has been uploaded successfully.');
     }
 
     /**
@@ -75,13 +75,6 @@ class BlogController extends Controller
      * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
-    {
-        $title = $slug;
-        $blog = Blog::where('slug', $slug)->first();
-        $moreBlogs = Blog::with('user')->oldest()->limit(5)->get();
-        return view('admin.blog.show', compact('title', 'moreBlogs', 'blog'));
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -89,6 +82,12 @@ class BlogController extends Controller
      * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
+     public function show($slug)
+    {
+        $title = $slug;
+        $blog = Blog::where('slug', $slug)->first();
+        return view('admin.blog.show', compact('title', 'moreBlogs', 'blog'));
+    }
     public function edit($slug)
     {
         $title = $slug;
@@ -96,14 +95,7 @@ class BlogController extends Controller
         return view('admin.blog.edit', compact('blog'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $string
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $slug)
+     public function update(Request $request, $slug)
     {
         $request->validate([
             'title' => 'required|string',
@@ -117,12 +109,13 @@ class BlogController extends Controller
             $image_resize->resize(300, 300, function ($const) {
                 $const->aspectRatio();
             });
-            // $image_resize->save(storage_path('app/public/images/blogs/' . $filename));
-            $image_resize->save('storage/images/blogs/' . $filename);
+
+            $image_resize->save(public_path('/images/blogs/'. $filename, 80));
+
             Blog::where('slug', $slug)->update([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
-                'slug' => SlugService::createSlug(Blog::class, 'slug', $request->title),
+                'slug' => Str::slug($request->title),
                 'image_path' => $filename,
                 'user_id' => auth()->user()->id,
             ]);
@@ -130,12 +123,21 @@ class BlogController extends Controller
             Blog::where('slug', $slug)->update([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
-                'slug' => SlugService::createSlug(Blog::class, 'slug', $request->title),
+                'slug' => Str::slug($request->title),
                 'user_id' => auth()->user()->id,
             ]);
         }
-        return redirect()->route('blog.index')->with("status", 'Your blog has been edited successfully.');
+        return redirect()->route('admin')->with("status", 'Your blog has been edited successfully.');
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $string
+     * @return \Illuminate\Http\Response
+     */
+
 
     /**
      * Remove the specified resource from storage.

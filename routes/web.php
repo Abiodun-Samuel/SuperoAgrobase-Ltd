@@ -57,6 +57,8 @@ Route::get('/hya', [HarvestYieldAcademyController::class, 'home'])->name('academ
 Route::get('/hyacademy-form', [HarvestYieldAcademyController::class, 'index'])->name('academy.register')->middleware('auth');
 Route::get('/hyacademy/students', [HarvestYieldAcademyController::class, 'students'])->name('academy.student')->middleware('auth');
 Route::post('/harvestyield-academy', [HarvestYieldAcademyController::class, 'store'])->name('academy.store');
+Route::post('/hyacademy/students/message', [HarvestYieldAcademyController::class, 'sendMessage'])->name('academy.message');
+Route::post('/hyacademy/students/assignment', [HarvestYieldAcademyController::class, 'submitAssignmanet'])->name('academy.assignment');
 
 // Mail Controller Routes
 Route::get('/contact_us', [MailController::class, 'contact'])->name('contact');

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\HYAcademyMail;
 use App\Models\HYAcademy;
-use Barryvdh\DomPDF\Facade as PDF;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Mail\HYAcademyMail;
 use Illuminate\Support\Str;
+use App\Mail\StudentMessage;
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Mail;
 
 class HarvestYieldAcademyController extends Controller
 {
@@ -21,7 +22,7 @@ class HarvestYieldAcademyController extends Controller
         // validate input
         $request->validate([
             'name' => 'required|string|unique:h_y_academies',
-            'phone' => 'required|digits:11|unique:h_y_academies',
+            // 'phone' => 'required|digits:11|unique:h_y_academies',
             'gender' => 'required|string',
             'state' => 'required|string',
             'lga' => 'required|string',
@@ -36,7 +37,8 @@ class HarvestYieldAcademyController extends Controller
 
         // store applicants
         $hyacademy = new HYAcademy();
-        $hyacademy->name = $request->name;
+        $hyacademy->name = auth()->user()->name;
+        $hyacademy->email = auth()->user()->email;
         $hyacademy->phone = $request->phone;
         $hyacademy->gender = $request->gender;
         $hyacademy->address = $request->lga . " LGA, " . $request->state;
@@ -48,8 +50,7 @@ class HarvestYieldAcademyController extends Controller
 
         // generate addmission letter pdf and store
         $pdf = PDF::loadView('HYAcademy.admission-letter', $hyacademy);
-        $pdf->save('storage/images/HYAcademy/' .$hyacademy->name . '.pdf');
-        // $pdf->save(storage_path('app/public/images/HYAcademy/' . $hyacademy->name . '.pdf'));
+        $pdf->save(public_path('images/HYAcademy/'.$hyacademy->name. '.pdf'));
 
         Mail::to(auth()->user()->email)->send(new HYAcademyMail($hyacademy));
 
@@ -64,5 +65,22 @@ class HarvestYieldAcademyController extends Controller
     {
         $hyacademy = HYAcademy::with('user')->get();
         return view("HYAcademy.students", compact('hyacademy'));
+    }
+    public function submitAssignmanet(Request $request){
+        $request->validate([
+            'assignment_file' => 'required|mimes:jpg,jpeg,pdf,png,docx,doc|max:2048'
+        ]);
+        $image = $request->assignment_file;
+        $filename = auth()->user()->name . '- Assignment'  . uniqid() . '.' . $request->assignment_file->extension();
+        $image->move(public_path('images/HYAcademy/Assignment'), $filename);
+        return back()->with('assignment', auth()->user()->name.', Great job! You have Successfully Submitted your Assignment');
+    }
+    public function sendMessage(Request $request){
+        $request->validate([
+            'student_message' => 'required|string|max:255'
+        ]);
+        $student_message = $request->student_message;
+        Mail::to("contact@superoagrobase.com")->send(new StudentMessage($student_message));
+         return back()->with('studentmessage', 'Your message has been delivered, we will get back to you shortly.');
     }
 }

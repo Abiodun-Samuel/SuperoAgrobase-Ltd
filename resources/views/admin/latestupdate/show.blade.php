@@ -19,7 +19,7 @@
                     <div style="height: 30px" class="sharethis-inline-share-buttons my-3"></div><!-- ShareThis END -->
                     <p class="mt-3"> {{ $latestUpdate->description }} </p>
                     <img class="img-fluid bg-secondary" loading="lazy"
-                        src="{{ url('/storage/images/latestupdates/' . $latestUpdate->image_path) }}"
+                        src="{{ url('/images/latestupdates/' . $latestUpdate->image_path) }}"
                         alt="{{ $latestUpdate->title }}" width="300" height="300" title="{{ $latestUpdate->title }}">
                 </div>
 

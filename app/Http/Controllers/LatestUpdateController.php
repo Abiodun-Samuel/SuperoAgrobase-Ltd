@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Image;
+use Illuminate\Support\Str;
 use App\Models\LatestUpdate;
 use Illuminate\Http\Request;
-use Image;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class LatestUpdateController extends Controller
 {
@@ -59,19 +59,17 @@ class LatestUpdateController extends Controller
         $image_resize->resize(300, 300, function ($const) {
             $const->aspectRatio();
         });
-        // $image_resize->save(storage_path('app/public/images/latestupdates/' . $filename));
-        $image_resize->save('storage/images/latestupdates/' . $filename);
-
+        $image_resize->save(public_path('/images/latestupdates/'. $filename, 80));
 
         LatestUpdate::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'slug' => SlugService::createSlug(LatestUpdate::class, 'slug', $request->title),
+            'slug' => Str::slug($request->title),
             'image_path' => $filename,
             'user_id' => auth()->user()->id,
         ]);
 
-        return redirect()->route('latestupdate.index')->with("status", 'Your latest update has been posted successfully.');
+        return redirect()->route('admin')->with("status", 'Your latest update has been posted successfully.');
     }
 
     /**
@@ -122,13 +120,12 @@ class LatestUpdateController extends Controller
             $image_resize->resize(300, 300, function ($const) {
                 $const->aspectRatio();
             });
-            // $image_resize->save(storage_path('app/public/images/latestupdates/' . $filename));
-            $image_resize->save('storage/images/latestupdates/' . $filename);
+            $image_resize->save(public_path('images/latestupdates/'. $filename, 80));
 
             LatestUpdate::where('slug', $slug)->update([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
-                'slug' => SlugService::createSlug(LatestUpdate::class, 'slug', $request->title),
+                'slug' => Str::slug($request->title),
                 'image_path' => $filename,
                 'user_id' => auth()->user()->id,
             ]);
@@ -136,13 +133,13 @@ class LatestUpdateController extends Controller
             LatestUpdate::where('slug', $slug)->update([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
-                'slug' => SlugService::createSlug(LatestUpdate::class, 'slug', $request->title),
+                'slug' => Str::slug($request->title),
                 // 'image_path' => $filename,
                 'user_id' => auth()->user()->id,
             ]);
         }
 
-        return redirect()->route('latestupdate.index')->with("status", 'Your post has been edited successfully.');
+        return redirect()->route('admin')->with("status", 'Your post has been edited successfully.');
     }
 
     /**
