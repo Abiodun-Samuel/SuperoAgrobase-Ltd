@@ -3302,7 +3302,7 @@
                 "shasum": ""
             },
             "require": {
-                "illuminate/cookie": "^7.0|^8.0",
+                "illuminate/cookie": "^7.0|^7.0",
                 "illuminate/support": "^7.0|^8.0",
                 "illuminate/view": "^7.0|^8.0",
                 "php": "^8.0",
