@@ -109,14 +109,3 @@
     </section>
 @endsection
 
-
-
-{{-- <section id="hya-student">
-    <div class="container">
-        <div class="row ">
-            <div class="col-lg-6 col-md-6 mt-5">
-
-            </div>
-        </div>
-    </div>
-</section> --}}
