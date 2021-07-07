@@ -103,7 +103,7 @@
                 <div class="box">
                     <img class="my-1" loading="lazy" src="<?php echo e(url('images/icons/students.png')); ?>" height="24"
                         width="24" alt="HYAcademy Students" title="HYAcademy Students">
-                    <h5> <span><?php echo e($hyacademy->count()); ?> </span> HYAcademy Students </h5>
+                    <h5> <span><?php echo e($students); ?> </span> HYAcademy Students </h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 my-3">

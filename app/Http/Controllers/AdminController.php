@@ -16,10 +16,11 @@ class AdminController extends Controller
     {
         $title = "Admin Panel";
         $users = User::count();
+        $students = HYAcademy::count();
         $hyacademy = HYAcademy::with('user')->paginate(5);
         $blogs = Blog::with('user')->paginate(5);
         $updates = LatestUpdate::with('user')->paginate(5);
-        return view('admin.admin', compact("title", "users", 'hyacademy', 'blogs', 'updates'));
+        return view('admin.admin', compact("title", "users", 'hyacademy', 'blogs', 'updates', 'students'));
     }
     public function hyacademy()
     {

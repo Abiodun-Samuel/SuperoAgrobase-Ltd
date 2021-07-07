@@ -14,7 +14,7 @@
 
                     <div class="hero-btn my-4 anim">
                         <a class="mybtn mr-4" href="<?php echo e(url('/Our Products')); ?>">Products</a>
-                        <a class="mybtn ml-4" href="<?php echo e(url('/contact_us')); ?>">Contact</a>
+                        <a class="mybtn" href="<?php echo e(url('/contact_us')); ?>">Contact</a>
                     </div>
                     <div class="hero-icon my-5 anim">
                         <a href="https://wa.me/message/KK2QPDR6KTLBK1">
@@ -190,7 +190,7 @@
                         <div data-aos="fade-up" class="col-lg-4 col-md-6 my-3">
                             <div class="card">
                                 <img class="img-fluid bg-secondary" loading="lazy"
-                                    src="<?php echo e(url('storage/images/latestupdates/' . $latestUpdate->image_path)); ?>"
+                                    src="<?php echo e(url('images/latestupdates/' . $latestUpdate->image_path)); ?>"
                                     alt="<?php echo e($latestUpdate->title); ?>" width="300" height="300"
                                     title="<?php echo e($latestUpdate->title); ?>">
 

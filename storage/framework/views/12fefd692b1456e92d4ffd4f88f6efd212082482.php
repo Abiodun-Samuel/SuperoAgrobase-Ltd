@@ -293,8 +293,6 @@
         </svg>
     </a>
 
-    <?php echo $__env->make('cookie-consent::index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
     <!-- Script -->
     <script src="<?php echo e(asset('/js/app.js?ver=1.0')); ?>"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -16,7 +16,7 @@
 
                     <div class="hero-btn my-4 anim">
                         <a class="mybtn mr-4" href="{{ url('/Our Products') }}">Products</a>
-                        <a class="mybtn ml-4" href="{{ url('/contact_us') }}">Contact</a>
+                        <a class="mybtn" href="{{ url('/contact_us') }}">Contact</a>
                     </div>
                     <div class="hero-icon my-5 anim">
                         <a href="https://wa.me/message/KK2QPDR6KTLBK1">
@@ -192,7 +192,7 @@
                         <div data-aos="fade-up" class="col-lg-4 col-md-6 my-3">
                             <div class="card">
                                 <img class="img-fluid bg-secondary" loading="lazy"
-                                    src="{{ url('storage/images/latestupdates/' . $latestUpdate->image_path) }}"
+                                    src="{{ url('images/latestupdates/' . $latestUpdate->image_path) }}"
                                     alt="{{ $latestUpdate->title }}" width="300" height="300"
                                     title="{{ $latestUpdate->title }}">
 
