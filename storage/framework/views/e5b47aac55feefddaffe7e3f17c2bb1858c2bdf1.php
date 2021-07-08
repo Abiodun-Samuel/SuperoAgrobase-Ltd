@@ -6,7 +6,7 @@
     <title> Admin Panel </title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <meta
         content="Supero Agrobase Limited is an indigenous company in Nigeria with deep understanding of the needs and challenges of Nigerian farmers. We deal with  Agro - Input products, claims, research and Promotion, Sales of Agro input Products (AgriCourt Ventures) and Production of Vegetable Crops (HarvestYield Farm)"
@@ -16,21 +16,21 @@
         content="irrigation cultivation husbandry horticulture crop biofuel farm animal husbandry farming cultivate agribusiness food domestication agricultural manure  tillage monoculture forestry livestock harvest agronomy pesticide cotton wheat crop rotation dairy aquaculture sow overcrop education raw material genetically modified organism selective breeding climate plow farmer plant fertilize fiber grow fertile crescent"
         name="keywords" />
 
-    {{-- Google fonts --}}
+    
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
-    <link href="{{ asset('/images/favicon.png') }}" rel="icon" />
-    <link href=" {{ asset('/images/apple-touch-icon.png') }}" rel="apple-touch-icon" />
+    <link href="<?php echo e(asset('/images/favicon.png')); ?>" rel="icon" />
+    <link href=" <?php echo e(asset('/images/apple-touch-icon.png')); ?>" rel="apple-touch-icon" />
 
     <!-- Style libraries -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="{{ asset('/css/app.css?ver=1.0') }}" />
-    @stack('styles')
+    <link rel="stylesheet" href="<?php echo e(asset('/css/app.css?ver=1.0')); ?>" />
+    <?php echo $__env->yieldPushContent('styles'); ?>
 
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="{{ url('style.css?ver=1.0') }}" />
-    {{-- <link rel="stylesheet" href="{{ url('/css/style.css?ver=1.0') }}" /> --}}
+    <link rel="stylesheet" href="<?php echo e(url('style.css?ver=1.0')); ?>" />
+    
 
     <style>
         body {
@@ -70,7 +70,7 @@
             color: #c0bebe;
         }
 
-        @media screen and (max-width: 568px) {
+        @media  screen and (max-width: 568px) {
             td {
                 font-size: 0.75rem;
             }
@@ -82,7 +82,7 @@
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="{{ url('images/logo.jpg') }}" alt=""></a>
+            <a class="navbar-brand" href="#"><img src="<?php echo e(url('images/logo.jpg')); ?>" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -90,8 +90,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
+                        <form action="<?php echo e(route('logout')); ?>" method="post">
+                            <?php echo csrf_field(); ?>
                             <button class="border-0 text-light px-3 bg-transparent py-1 w-100 outline-0" type="submit">
                                 Logout
                             </button>
@@ -105,39 +105,39 @@
         <div class="row mt-3">
             <div class="col-lg-3 col-md-6 my-3">
                 <div class="box">
-                    <img class="my-1" loading="lazy" src="{{ url('images/icons/user.png') }}" height="24" width="24"
+                    <img class="my-1" loading="lazy" src="<?php echo e(url('images/icons/user.png')); ?>" height="24" width="24"
                         title=" Registered Users" alt="users">
-                    <h5> <span>{{ $users }} </span> Registered Users</h5>
+                    <h5> <span><?php echo e($users); ?> </span> Registered Users</h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 my-3 ">
                 <div class="box">
-                    <img class="my-1" loading="lazy" src="{{ url('images/icons/students.png') }}" height="24"
+                    <img class="my-1" loading="lazy" src="<?php echo e(url('images/icons/students.png')); ?>" height="24"
                         width="24" alt="HYAcademy Students" title="HYAcademy Students">
-                    <h5> <span>{{ $hyacademy }} </span> HYAcademy Students </h5>
+                    <h5> <span><?php echo e($hyacademy); ?> </span> HYAcademy Students </h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 my-3">
                 <div class="box">
-                    <img class="my-1" loading="lazy" src="{{ url('images/icons/blog.png') }}" height="24" width="24"
+                    <img class="my-1" loading="lazy" src="<?php echo e(url('images/icons/blog.png')); ?>" height="24" width="24"
                         alt="blog" title="blog">
-                    <h5> <span>{{ $blogs->count() }} </span> Blogs </h5>
+                    <h5> <span><?php echo e($blogs->count()); ?> </span> Blogs </h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 my-3 ">
                 <div class="box">
-                    <img class="my-1" loading="lazy" src="{{ url('images/icons/refresh.png') }}" height="24"
+                    <img class="my-1" loading="lazy" src="<?php echo e(url('images/icons/refresh.png')); ?>" height="24"
                         width="24" alt="updates" title="updates">
-                    <h5> <span>{{ $updates->count() }} </span> Updates </h5>
+                    <h5> <span><?php echo e($updates->count()); ?> </span> Updates </h5>
                 </div>
             </div>
         </div>
 
-        @if (session('status'))
+        <?php if(session('status')): ?>
             <div class="alert alert-success">
-                <p>{{ session('status') }}</p>
+                <p><?php echo e(session('status')); ?></p>
             </div>
-        @endif
+        <?php endif; ?>
 
         <div class="row my-3">
             <div class="col-lg-6 col-md-6 my-4">
@@ -146,24 +146,25 @@
                     <div class="card-header mb-2">
                         Recent Blog Posts
                     </div>
-                    <a href="{{ route('blog.create') }}">Add Blogs</a>
+                    <a href="<?php echo e(route('blog.create')); ?>">Add Blogs</a>
                     <div class="card-body">
 
-                        @foreach ($blogs as $blog)
-                            <p> <b>Title: </b> {{ $blog->title }} </p>
-                            <a class="text-danger bg-transparent mx-2" href="{{ route('blog.edit', $blog->slug) }}">
+                        <?php $__currentLoopData = $blogs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <p> <b>Title: </b> <?php echo e($blog->title); ?> </p>
+                            <a class="text-danger bg-transparent mx-2" href="<?php echo e(route('blog.edit', $blog->slug)); ?>">
                                 <u>Edit</u>
                             </a>
-                            <form class="d-inline" action="{{ route('blog.destroy', $blog->slug) }}" method="post">
-                                @csrf
-                                @method('DELETE')
+                            <form class="d-inline" action="<?php echo e(route('blog.destroy', $blog->slug)); ?>" method="post">
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('DELETE'); ?>
                                 <button class="text-danger border-0 outline-0 bg-transparent mx-2" type="submit">
                                     <u>Delete</u> </button>
                             </form>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
 
-                    {{ $blogs->links() }}
+                    <?php echo e($blogs->links()); ?>
+
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 my-4">
@@ -171,36 +172,38 @@
                     <div class="card-header mb-2">
                         Recent Updates
                     </div>
-                    <a href="{{ route('latestupdate.create') }}">Add Updates</a>
+                    <a href="<?php echo e(route('latestupdate.create')); ?>">Add Updates</a>
 
                     <div class="card-body">
-                        @foreach ($updates as $update)
-                            <p class="pb-0"> <b>Title: </b>{{ $update->title }}</p>
+                        <?php $__currentLoopData = $updates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $update): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <p class="pb-0"> <b>Title: </b><?php echo e($update->title); ?></p>
                             <a class="text-danger mx-1 text-center"
-                                href="{{ route('latestupdate.edit', $update->slug) }}">
+                                href="<?php echo e(route('latestupdate.edit', $update->slug)); ?>">
                                 <u>Edit</u> </a>
 
-                            <form class="d-inline" action="{{ route('latestupdate.destroy', $update->slug) }}"
+                            <form class="d-inline" action="<?php echo e(route('latestupdate.destroy', $update->slug)); ?>"
                                 method="post">
-                                @csrf
-                                @method('DELETE')
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('DELETE'); ?>
                                 <button class="text-danger border-0 outline-0 bg-transparent" type="submit">
                                     <u>Delete</u></button>
                             </form>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
-                    {{ $updates->links() }}
+                    <?php echo e($updates->links()); ?>
+
                 </div>
             </div>
             <div class="col-lg-6 my-3">
-                <a class="mybtn" href="{{ route('admin.hyacademy') }}">Hyacademy Student's Details</a>
+                <a class="mybtn" href="<?php echo e(route('admin.hyacademy')); ?>">Hyacademy Student's Details</a>
             </div>
         </div>
     </div>
 
 
 
-    <script src="{{ asset('/js/app.js?ver=1.0') }}"></script>
+    <script src="<?php echo e(asset('/js/app.js?ver=1.0')); ?>"></script>
 </body>
 
 </html>
+<?php /**PATH C:\Users\abiod\Desktop\Laravel-Projects\superoinc\resources\views/admin/admin.blade.php ENDPATH**/ ?>

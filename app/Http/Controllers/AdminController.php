@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Image;
 use App\Models\Blog;
 use App\Models\User;
 use App\Models\HYAcademy;
 use App\Models\LatestUpdate;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Image;
+
 
 class AdminController extends Controller
 {
@@ -16,17 +19,20 @@ class AdminController extends Controller
     {
         $title = "Admin Panel";
         $users = User::count();
-        $students = HYAcademy::count();
-        $hyacademy = HYAcademy::with('user')->paginate(5);
+        $hyacademy = HYAcademy::count();
+        $students = HYAcademy::paginate(5);
         $blogs = Blog::with('user')->paginate(5);
         $updates = LatestUpdate::with('user')->paginate(5);
-        return view('admin.admin', compact("title", "users", 'hyacademy', 'blogs', 'updates', 'students'));
+
+
+        return view('admin.admin', compact("title", "users", 'blogs', 'updates', 'hyacademy','students'));
     }
     public function hyacademy()
     {
         return view('admin.harvestyield-academy.index', [
             'title' => "Harvestyield Academy",
-            'students' => HYAcademy::with('user')->paginate(6),
+            'students' => HYAcademy::with('user')->get(),
         ]);
     }
+
 }

@@ -50,7 +50,7 @@ class HarvestYieldAcademyController extends Controller
 
         // generate addmission letter pdf and store
         $pdf = PDF::loadView('HYAcademy.admission-letter', $hyacademy);
-        $pdf->save(public_path('images/HYAcademy/'.$hyacademy->name. '.pdf'));
+        $pdf->save(public_path('images/HYAcademy/'. $hyacademy->name. '.pdf'));
 
         Mail::to(auth()->user()->email)->send(new HYAcademyMail($hyacademy));
 
