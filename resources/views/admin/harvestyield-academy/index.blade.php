@@ -122,7 +122,7 @@
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <p><b>Name:</b> {{ $student->name }}</p>
-                            <p><b>Email:</b> {{ $student->email }}</p>
+                            <p><b>Email:</b> {{ $student->user->email }}</p>
                             <p><b>Phone:</b> {{ $student->phone }}</p>
                             <p><b>Gender:</b> {{ $student->gender }}</p>
                             <p><b>Education:</b> {{ $student->education }}</p>

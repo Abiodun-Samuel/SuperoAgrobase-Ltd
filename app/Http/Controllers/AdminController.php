@@ -34,5 +34,4 @@ class AdminController extends Controller
             'students' => HYAcademy::with('user')->get(),
         ]);
     }
-
 }

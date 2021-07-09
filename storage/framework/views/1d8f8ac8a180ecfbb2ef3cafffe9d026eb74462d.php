@@ -122,7 +122,7 @@
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <p><b>Name:</b> <?php echo e($student->name); ?></p>
-                            <p><b>Email:</b> <?php echo e(auth()->user()->hyacademy->email); ?></p>
+                            <p><b>Email:</b> <?php echo e($student->user->email); ?></p>
                             <p><b>Phone:</b> <?php echo e($student->phone); ?></p>
                             <p><b>Gender:</b> <?php echo e($student->gender); ?></p>
                             <p><b>Education:</b> <?php echo e($student->education); ?></p>
