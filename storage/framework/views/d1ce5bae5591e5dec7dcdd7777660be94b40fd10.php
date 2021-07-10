@@ -103,7 +103,7 @@
                             <p>
                                 At Agricourt Ventures, we provide quality Agricultural inputs such as;
                             </p>
-                            <ul data-aos="fade-up" data-aos-once="false" class="list-unstyled">
+                            <ul class="list-unstyled">
                                 <li> High quality seeds, Granular and Water soluble fertilizers.</li>
                                 <li> Irrigation systems.</li>
                                 <li> Growing Media (Cocopeat,
@@ -133,7 +133,7 @@
                             <p>
                                 At Harvestyield Farm, we focus on production of vegetable crops like;
                             </p>
-                            <ul data-aos="fade-up" data-aos-once="false" data-aos-delay="50" class="list-unstyled">
+                            <ul class="list-unstyled">
                                 <li> Tomato, Cucumber, Sweetcorn, Special Watermelon & Pepper.</li>
                                 <li> We also provide farm management & consultancy services, and partner with
                                     other
