@@ -21,7 +21,8 @@
         th {
             border: 1px solid #ddd;
             cellspacing: 0;
-            padding: 7px;
+            padding: 5px;
+            font-size: 12px;
         }
 
     </style>
