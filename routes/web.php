@@ -27,6 +27,8 @@ Route::get('/login/facebook/callback', [FacebookController::class, 'handleCallba
 // Admin page
 Route::get('/admin/', [AdminController::class, 'index'])->name('admin')->middleware('auth', 'is_admin');
 Route::get('/admin/harvestyield-academy', [AdminController::class, 'hyacademy'])->name('admin.hyacademy')->middleware('auth', 'is_admin');
+Route::post('/admin/harvestyield-academy', [AdminController::class, 'course'])->name('admin.course')->middleware('auth', 'is_admin');
+Route::post('/admin/harvestyield-academy/news', [AdminController::class, 'news'])->name('admin.news')->middleware('auth', 'is_admin');
 
 // Admin Latest Update
 Route::get('/Lastest Updates', [LatestUpdateController::class, 'index'])->name('latestupdate.index');

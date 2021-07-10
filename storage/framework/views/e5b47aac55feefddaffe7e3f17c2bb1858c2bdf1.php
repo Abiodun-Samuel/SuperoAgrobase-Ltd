@@ -167,6 +167,7 @@
 
                 </div>
             </div>
+
             <div class="col-lg-6 col-md-6 my-4">
                 <div class="card">
                     <div class="card-header mb-2">
@@ -194,8 +195,106 @@
 
                 </div>
             </div>
-            <div class="col-lg-6 my-3">
-                <a class="mybtn" href="<?php echo e(route('admin.hyacademy')); ?>">Hyacademy Student's Details</a>
+
+            <div class="col-lg-6 col-md-6 my-4">
+                <div class="card">
+                    <div class="card-header mb-2">
+                        HarvestYield Academy
+                    </div>
+
+                </div>
+
+                <a class="py-3" href="<?php echo e(route('admin.hyacademy')); ?>">View Students' Details</a>
+                <hr>
+
+                <p>Upload Course Content</p>
+                <?php if(session('course')): ?>
+                    <div class="alert alert-success">
+                        <p> <?php echo e(session('course')); ?> </p>
+                    </div>
+                <?php endif; ?>
+
+                <form action="<?php echo e(route('admin.course')); ?>" method="post" enctype="multipart/form-data">
+                    <?php echo csrf_field(); ?>
+
+                    <?php $__errorArgs = ['week'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <div class="alert alert-danger">
+                            <p><?php echo e($message); ?></p>
+                        </div>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
+                    <?php $__errorArgs = ['topic'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <div class="alert alert-danger">
+                            <p><?php echo e($message); ?></p>
+                        </div>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
+                    <?php $__errorArgs = ['material'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <div class="alert alert-danger">
+                            <p><?php echo e($message); ?></p>
+                        </div>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                    <input class="border-0 rounded-0 my-2 p-1" type="number" name="week" id="week" placeholder="Week">
+                    <input class="border-1  rounded-0 my-2 p-1" type="text" name="topic" id="topic" placeholder="Topic">
+                    <input class="border-1 rounded-0 my-2" type="file" name="material" id="material"> <br>
+                    <input class="border-0 rounded-0 my-2 py-1 px-3 bg-white text-primary" type="submit" value="Upload">
+                </form>
+            </div>
+            <div class="col-lg-6 col-md-6 my-4">
+                <div class="card">
+                    <div class="card-header mb-2">
+                        HarvestYield Academy Notifications
+                    </div>
+                </div>
+
+                <p>Send News/Notification</p>
+                <?php if(session('news')): ?>
+                    <div class="alert alert-success">
+                        <p> <?php echo e(session('news')); ?> </p>
+                    </div>
+                <?php endif; ?>
+
+                <form action="<?php echo e(route('admin.news')); ?>" method="post" enctype="application/x-www-form-urlencoded">
+                    <?php echo csrf_field(); ?>
+                    <?php $__errorArgs = ['news'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <div class="alert alert-danger">
+                            <p><?php echo e($message); ?></p>
+                        </div>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
+                    <input class="border-1 w-100 rounded-0 my-2 p-1" type="text" name="news" id="notifications"
+                        placeholder="Notifications">
+
+                    <input class="border-0 rounded-0 my-2 py-1 px-3 bg-white text-primary" type="submit" value="Send">
+                </form>
             </div>
         </div>
     </div>

@@ -149,4 +149,4 @@
 </body>
 
 </html>
-<?php /**PATH C:\Users\abiod\Desktop\Laravel-Projects\superoinc\resources\views/admin/harvestyield-academy/index.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Users\abiod\Desktop\Laravel-Projects\superoinc\resources\views\admin\harvestyield-academy\index.blade.php ENDPATH**/ ?>

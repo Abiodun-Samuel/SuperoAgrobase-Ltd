@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HYAcademy;
 use App\Mail\HYAcademyMail;
-use Illuminate\Support\Str;
 use App\Mail\StudentMessage;
-use Illuminate\Http\Request;
+use App\Models\HYAcademy;
+use App\Models\HyacademyCourse;
+use App\Models\HyacademyNews;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class HarvestYieldAcademyController extends Controller
 {
@@ -50,7 +52,7 @@ class HarvestYieldAcademyController extends Controller
 
         // generate addmission letter pdf and store
         $pdf = PDF::loadView('HYAcademy.admission-letter', $hyacademy);
-        $pdf->save(public_path('images/HYAcademy/'. $hyacademy->name. '.pdf'));
+        $pdf->save(public_path('images/HYAcademy/' . $hyacademy->name . '.pdf'));
 
         Mail::to(auth()->user()->email)->send(new HYAcademyMail($hyacademy));
 
@@ -64,23 +66,27 @@ class HarvestYieldAcademyController extends Controller
     public function students()
     {
         $hyacademy = HYAcademy::with('user')->get();
-        return view("HYAcademy.students", compact('hyacademy'));
+        $courses = HyacademyCourse::with('user')->get();
+        $news = HyacademyNews::with('user')->get();
+        return view("HYAcademy.students", compact('hyacademy', 'courses', 'news'));
     }
-    public function submitAssignmanet(Request $request){
+    public function submitAssignmanet(Request $request)
+    {
         $request->validate([
-            'assignment_file' => 'required|mimes:jpg,jpeg,pdf,png,docx,doc|max:2048'
+            'assignment_file' => 'required|mimes:jpg,jpeg,pdf,png,docx,doc|max:2048',
         ]);
         $image = $request->assignment_file;
-        $filename = auth()->user()->name . '- Assignment'  . uniqid() . '.' . $request->assignment_file->extension();
+        $filename = auth()->user()->name . '-assignment.' . $request->assignment_file->extension();
         $image->move(public_path('images/HYAcademy/Assignment'), $filename);
-        return back()->with('assignment', auth()->user()->name.', Great job! You have Successfully Submitted your Assignment');
+        return back()->with('assignment', auth()->user()->name . ', Great job! You have Successfully Submitted your Assignment');
     }
-    public function sendMessage(Request $request){
+    public function sendMessage(Request $request)
+    {
         $request->validate([
-            'student_message' => 'required|string|max:255'
+            'student_message' => 'required|string|max:255',
         ]);
         $student_message = $request->student_message;
         Mail::to("contact@superoagrobase.com")->send(new StudentMessage($student_message));
-         return back()->with('studentmessage', 'Your message has been delivered, we will get back to you shortly.');
+        return back()->with('studentmessage', 'Your message has been delivered, we will get back to you shortly.');
     }
 }

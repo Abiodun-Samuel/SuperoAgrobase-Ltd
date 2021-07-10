@@ -116,6 +116,9 @@
                 <p> Students' Details </p>
             </div>
         </div>
+        <div class="my-2">
+            <a href="{{ url('images/HYAcademy/Harvestyield-academy-students.pdf') }}" download> Download </a>
+        </div>
         <div class="row">
             @foreach ($students as $student)
                 <div class="col-lg-4 col-md-6 col-sm-6 mb-2">
@@ -127,7 +130,12 @@
                             <p><b>Gender:</b> {{ $student->gender }}</p>
                             <p><b>Education:</b> {{ $student->education }}</p>
                             <p><b>Address:</b> {{ $student->address }}</p>
-                            <p><b>How did you hear about the training?</b> {{ $student->media }}</p>
+
+                            <a class="mr-5" href="mailto:{{ $student->user->email }}"><img class="mr-3"
+                                    src="{{ url('images/icons/message.png') }}"
+                                    alt="send mail to {{ $student->name }}"></a>
+                            <a href="tel:{{ $student->phone }}"><img src="{{ url('images/icons/telephone.png') }}"
+                                    alt="call {{ $student->name }}"></a>
                         </div>
                     </div>
                 </div>

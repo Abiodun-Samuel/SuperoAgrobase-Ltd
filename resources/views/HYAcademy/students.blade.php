@@ -35,7 +35,14 @@
                             <div class="card">
                                 <div class="card-header"> Course Outline </div>
                                 <div class="card-body">
-                                    <p> <b>Week 1: </b> Not Avaialble Yet! </p>
+                                    @foreach ($courses as $course)
+                                        <p> <b>Week {{ $course->week }}: </b> {{ $course->topic }} <br>
+                                            @if (!empty($course->material))
+                                                <a href="{{ url('/images/HYAcademy/course/' . $course->material) }}"
+                                                    download>Download</a>
+                                            @endif
+                                        </p>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -43,7 +50,12 @@
                             <div class="card">
                                 <div class="card-header"> Events / Notitifications </div>
                                 <div class="card-body">
-                                    <p> No Notification Yet! </p>
+                                    @foreach ($news as $new)
+                                        <p> {{ $new->news }} <br>
+                                            <small class="text-danger"> By {{ $new->user->name }}, Uploaded
+                                                {{ $new->created_at->diffForHumans() }}</small>
+                                        </p>
+                                    @endforeach
                                 </div>
                             </div>
 
@@ -108,4 +120,3 @@
         </div>
     </section>
 @endsection
-
