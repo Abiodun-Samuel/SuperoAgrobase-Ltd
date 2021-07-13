@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Admission Letter</title>
     <style>
         h3,
         h4,
@@ -27,8 +27,8 @@
         Mr. Adetola Damilola, <br>
         Training Coordinator, <br>
         HarvestYield Academy, <br>
-        13, Bakare Abiodun Street, Wera, <br>
-        Ikorodu, <br>
+        10, Jimoh Odu Street, Opp Benson B/S, <br>
+        Ikorodu Garage, <br>
         Lagos.
     </h3>
 
@@ -46,7 +46,7 @@
         12 Online classes on Google meet app. <br>
         3 Practical sessions on the farm. <br>
         It is important for all participants to get starter packs (Production Value packs) contents are Seeds, basic
-        Agrochemicals, Hand Sprayers and Fertilizers. This subsidizes to (#20,000 or $50).  <br>
+        Agrochemicals, Hand Sprayers and Fertilizers. This subsidizes to (#20,000 or $50). <br>
         Assignment and Personal field showcase is an important assessment upon certification. <br>
     </p>
 

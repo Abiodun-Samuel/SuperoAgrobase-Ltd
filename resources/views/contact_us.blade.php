@@ -182,9 +182,9 @@
                             </div>
 
                             <div style="width: 100%">
-                                <iframe loading="lazy" width="100%" height="250" frameborder="0" scrolling="no"
+                                <iframe loading="lazy" width="100%" height="250" frameborder="0" scrolling="yes"
                                     marginheight="0" marginwidth="0"
-                                    src="https://maps.google.com/maps?width=100%25&amp;height=200&amp;hl=en&amp;q=bakare%20Abiodun%20Street,%20Wera,%20Ikorodu%20Lagos.+(superoagrobase)&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                                    src="https://maps.google.com/maps?width=100%25&amp;height=250&amp;hl=en&amp;q=10,%20jimoh%20odu%20street,%20ikorodu%20lagos+(SuperoAgrobase%20Inc)&amp;t=&amp;z=18&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
                                 </iframe>
                             </div>
                         </div>
@@ -201,7 +201,7 @@
                                 loading="lazy" title="address">
                         </i>
                         <h3>Our Address</h3>
-                        <p> 13, Bakare Abiodun Street, Wera, Ikorodu Lagos.<br>
+                        <p> 10, Jimoh Odu Street, Opp Benson B/S, <br> Ikorodu Garage, Ikorodu, Lagos.
                         </p>
                     </div>
                 </div>
