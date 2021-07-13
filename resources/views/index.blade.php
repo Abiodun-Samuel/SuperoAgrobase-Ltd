@@ -360,7 +360,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div data-aos="fade-up" class="col-lg-4 col-md-6 text-center">
-                    <img loading="lazy" src="{{ url('/images/office.jpg') }}" alt="Our Office is open"
+                    <img loading="lazy" src="{{ url('/images/office-new.jpg') }}" alt="Our Office is open"
                         class="img-fluid my-3 " title="Office address" height="350" width="350">
                 </div>
                 <div data-aos="fade-up" data-aos-delay="100" class="col-lg-4 col-md-6 text-center">
