@@ -75,11 +75,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(HYAcademy::class);
     }
-     public function course()
+    public function course()
     {
         return $this->hasMany(HyacademyCourse::class);
     }
-     public function news()
+    public function news()
     {
         return $this->hasMany(HyacademyNews::class);
     }
