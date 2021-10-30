@@ -27,7 +27,6 @@ class LatestUpdateController extends Controller
             'prevUpdates' => $prevUpdates,
             'title' => $title,
         ]);
-
     }
 
     /**
@@ -59,7 +58,7 @@ class LatestUpdateController extends Controller
         $image_resize->resize(300, 300, function ($const) {
             $const->aspectRatio();
         });
-        $image_resize->save(public_path('/images/latestupdates/'. $filename, 80));
+        $image_resize->save(public_path('/images/latestupdates/' . $filename, 80));
 
         LatestUpdate::create([
             'title' => $request->input('title'),
@@ -120,7 +119,7 @@ class LatestUpdateController extends Controller
             $image_resize->resize(300, 300, function ($const) {
                 $const->aspectRatio();
             });
-            $image_resize->save(public_path('images/latestupdates/'. $filename, 80));
+            $image_resize->save(public_path('images/latestupdates/' . $filename, 80));
 
             LatestUpdate::where('slug', $slug)->update([
                 'title' => $request->input('title'),

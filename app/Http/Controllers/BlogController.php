@@ -55,7 +55,7 @@ class BlogController extends Controller
             $const->aspectRatio();
         });
         // save image
-        $image_resize->save(public_path('/images/blogs/'. $filename, 80));
+        $image_resize->save(public_path('/images/blogs/' . $filename, 80));
 
         // store blog in database
         Blog::create([
@@ -75,6 +75,12 @@ class BlogController extends Controller
      * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
+    public function show($slug)
+    {
+        $title = $slug;
+        $blog = Blog::where('slug', $slug)->first();
+        return view('admin.blog.show', compact('title', 'moreBlogs', 'blog'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -82,12 +88,6 @@ class BlogController extends Controller
      * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-     public function show($slug)
-    {
-        $title = $slug;
-        $blog = Blog::where('slug', $slug)->first();
-        return view('admin.blog.show', compact('title', 'moreBlogs', 'blog'));
-    }
     public function edit($slug)
     {
         $title = $slug;
@@ -95,7 +95,14 @@ class BlogController extends Controller
         return view('admin.blog.edit', compact('blog'));
     }
 
-     public function update(Request $request, $slug)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $string
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $slug)
     {
         $request->validate([
             'title' => 'required|string',
@@ -110,7 +117,7 @@ class BlogController extends Controller
                 $const->aspectRatio();
             });
 
-            $image_resize->save(public_path('/images/blogs/'. $filename, 80));
+            $image_resize->save(public_path('/images/blogs/' . $filename, 80));
 
             Blog::where('slug', $slug)->update([
                 'title' => $request->input('title'),
@@ -129,14 +136,6 @@ class BlogController extends Controller
         }
         return redirect()->route('admin')->with("status", 'Your blog has been edited successfully.');
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $string
-     * @return \Illuminate\Http\Response
-     */
 
 
     /**
