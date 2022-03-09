@@ -189,7 +189,6 @@
                                 <a class="prev mybtn" onclick="plusSlides(-1)">Prev</a>
                                 <a class="next mybtn" onclick="plusSlides(1)">Next</a>
                             </div>
-
                         </form>
                     </div>
                 </div>

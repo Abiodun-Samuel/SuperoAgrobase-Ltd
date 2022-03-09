@@ -161,7 +161,8 @@
                             <ul class="list-unstyled">
                                 <li class="box"> We identify problems in Production.</li>
                                 <li class="box"> Search for product(s) to solve the problem.</li>
-                                <li class="box"> Conduct trial(s) to affirm manufacturer claims about such product(s).</li>
+                                <li class="box"> Conduct trial(s) to affirm manufacturer claims about such
+                                    product(s).</li>
                                 <li class="box"> Promote the product brand(s) to users (farmers) and make such
                                     product available through our Agro-Input dealers’ network nationwide.</li>
                             </ul>
