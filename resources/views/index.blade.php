@@ -181,7 +181,7 @@
     {{-- latest Updates --}}
     <section id="latest-update">
         <div class="container">
-            <div class="header text-center">
+            <div class="header text-center sam">
                 <h3>
                     Latest Updates
                 </h3>
